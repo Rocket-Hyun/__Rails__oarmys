@@ -1,0 +1,49 @@
+<% if user_signed_in? %>
+  <% if current_user.tag_list.include?("master") %>
+    <%= render 'manager/nav' %>
+  <% else %>
+    <%= render 'service/nav' %>
+  <% end %>
+<% else %>
+    <%= render 'service/nav' %>
+<% end %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                        <h5 class="header"><b><i class="small material-icons">mode_edit</i>오아미스 문의 게시판</b></h5><br>
+
+                      <div class="collection">
+
+                        <% Board.where(level:2).reverse.each do |b| %>
+                            <a href="/service/ask_view/<%= b.id %>" class="collection-item black-text"><%= b.title %> <br>
+
+                              <div class="chip">
+
+                                <%= User.find(b.user_id).name %>
+                              <img src="https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/512/user.png " alt="Contact Person">
+                              </div>
+                              <div class="chip">
+
+                                <%= b.created_at.to_date %>
+                              <img src="https://cdn4.iconfinder.com/data/icons/pictograms-1/512/Calendar-512.png" alt="Contact Person">
+                              </div>
+                            </a>
+                        <% end %>
+
+
+
+                      </div>
+
+                        <% if user_signed_in? %>
+                          <a class="waves-effect waves-light pink lighten-5 black-text btn" href="/service/ask_write"><i class="material-icons left">mode_edit</i>글 쓰기</a>
+                        <% else %>
+                          <a class="waves-effect waves-light pink lighten-5 black-text btn disabled"><i class="material-icons left">mode_edit</i>글 쓰기</a>
+                        <% end %>
+            </div>
+        </div>
+    </div>
+
+
+<%= render 'service/footer' %>
+<%= render 'service/scrt' %>

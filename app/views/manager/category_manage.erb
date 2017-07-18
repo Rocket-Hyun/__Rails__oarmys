@@ -1,0 +1,29 @@
+<%= render 'manager/nav' %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                
+                <form action="/manager/category_add_real" method="post">
+                    <label>카테고리추가</label>
+                    <input type="text" name="name">
+                    
+                    <input type="submit">
+                </form>
+                
+                <h1>현재 카테고리</h1>
+                
+                    <% Category.all.each do |c| %>
+                        <p>
+                            <a href="/manager/category_user/<%= c.name %>" style="font-size:2em"><%= c.name %></a> 
+                             <b><a href="/manager/category_delete/<%= c.id %>" style="font-size:0.3em">[삭제]</a></b>
+                        </p>
+                    <% end %>                
+                
+            </div>
+        </div>
+    </div>
+
+
+<%= render 'service/footer' %>
+<%= render 'service/scrt' %>

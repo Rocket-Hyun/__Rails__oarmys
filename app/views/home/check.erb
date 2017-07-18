@@ -1,0 +1,32 @@
+<body onload="mobileCheck()">
+	
+	
+<a class="waves-effect waves-light btn center-align refresh" HREF="javascript:history.go(0)" style="width:200px"><i class="material-icons left">replay</i>새로고침</a>
+  <div class="progress">
+      <div class="indeterminate"></div>
+  </div>
+	
+<script type="text/javascript">
+function mobileCheck(){
+	var UserAgent = navigator.userAgent;
+	if (UserAgent.match(/iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || UserAgent.match(/LG|SAMSUNG|Samsung/) != null){
+		var curURL = location.href;
+    	var tagArray = curURL.split('check');
+    	window.location.replace(tagArray[0] + 'mindex');
+	}
+	else {
+		var curURL = location.href;
+    	var tagArray = curURL.split('check');
+    	window.location.replace(tagArray[0] + 'index');
+	}
+}
+</script>
+
+<script>
+	setTimeout("refresh()",1000);
+	function refresh(){
+    	document.getElementsByClassName("refresh")[0].click();
+}
+
+</script>
+</body>

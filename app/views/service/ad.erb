@@ -1,0 +1,50 @@
+<% if user_signed_in? %>
+  <% if current_user.tag_list.include?("master") %>
+  <%= render 'manager/nav' %>
+  <% else %>
+  <%= render 'service/nav' %>
+  <% end %>
+<% else %>
+  <%= render 'service/nav' %>
+<% end %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                
+  <div class="slider" style="margin-top:20px">
+    <ul class="slides">
+      <li>
+        <img src="/assets/1.JPG"> <!-- random image -->
+      </li>
+      <li>
+        <img src="/assets/2.JPG"> <!-- random image -->
+      </li>
+      <li>
+        <img src="/assets/3.JPG"> <!-- random image -->
+      </li>
+      <li>
+        <img src="/assets/4.JPG"> <!-- random image -->
+      </li>
+      <li>
+        <img src="/assets/5.JPG"> <!-- random image -->
+      </li>
+      <li>
+        <img src="/assets/6.JPG"> <!-- random image -->
+      </li>
+      <li>
+        <img src="/assets/7.JPG"> <!-- random image -->
+      </li>
+    </ul>
+  </div>
+
+        <div class="caption center-align" style="margin-top:20px">
+          <a href="/service/index" class="waves-effect waves-light btn red lighten-2"><b>오아미스 시작하기</b></a>
+        </div>
+            </div>
+        </div>
+    </div>
+
+
+<%= render 'service/footer' %>
+<%= render 'service/scrt' %>

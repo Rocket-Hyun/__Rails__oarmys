@@ -1,0 +1,259 @@
+<%= render 'service/nav' %>
+
+<!-- 소식 자세히보기 모달 -->
+  <div id="sisa-show" class="modal modal-fixed-footer" >
+    <div class="modal-content">
+      <img src=<%= image_path 'sisa.JPG' %> style="width:100%;" />
+    </div>
+    <div class="modal-footer">
+      <a class=" modal-action modal-close waves-effect waves-green btn-flat">닫기</a>
+    </div>
+  </div>
+
+  <div id="star-show" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <img src=<%= image_path 'star.JPG' %> style="width:100%;"/>
+    </div>
+    <div class="modal-footer">
+      <a class=" modal-action modal-close waves-effect waves-green btn-flat">닫기</a>
+    </div>
+  </div>
+
+  <div id="soccer-show" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <img src=<%= image_path 'soccer.JPG' %> style="width:100%;"/>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-action modal-close waves-effect waves-green btn-flat">닫기</a>
+    </div>
+  </div>
+
+  <div id="baseball-show" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <img src=<%= image_path 'baseball.JPG' %> style="width:100%;"/>
+    </div>
+    <div class="modal-footer">
+      <a class=" modal-action modal-close waves-effect waves-green btn-flat">닫기</a>
+    </div>
+  </div>
+
+  <div id="social-show" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <img src=<%= image_path 'social.jpg' %> style="width:100%;"/>
+    </div>
+    <div class="modal-footer">
+      <a class=" modal-action modal-close waves-effect waves-green btn-flat">닫기</a>
+    </div>
+  </div>
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m10 offset-m1 l8 offset-l2">
+                <br><br>
+
+                <% if user_signed_in? %>
+                    <% unless current_user.membership %>
+
+                          <div class="card white">
+                            <div class="card-content">
+
+                                    <div class="center-align">
+                                        <h4><b>군인 정보 입력</b>
+
+                                        </h4>
+                                    </div>
+
+                                    <form action="/service/register_real" method="post">
+
+
+                                        <label class="fsize0">군인 이름 [필수]</label>
+                                        <input type="text" name="s_name">
+                                        <br>
+
+                                        <label class="fsize0">군인 입대날짜</label>
+                                        <input type="date" name="s_date" value="<%= DateTime.now.to_date - 7 %>">
+
+
+                                        <p style="fsize0">*남은 수료기간: <span id="timeleft">0</span>일</p>
+
+
+                                        <br>
+
+                                        <label class="fsize0">군인 생년월일</label>
+                                        <input type="date" name="s_birth" value="1997-06-15">
+
+
+
+
+                                        <br>
+
+                                              <label class="fsize0">군인 주소</label>
+                                              <input type="text" name="s_type">
+                                        <br>
+                                        <label style="font-size:1.5em;">소식 분야를 선택해주세요</label><br>
+
+                                            <% Category.all.each do |c| %>
+                                                <p>
+                                                    <% if c.name == "농구" or c.name == "프리미엄" or c.name == "경제" %>
+                                                        <!--<input name="category<#%= c.id%>" class="single-checkbox" type="checkbox" id="test<#%= c.id %>" value="<#%=c.name%>" disabled="disabled"> -->
+                                                        <!-- <i class="tiny material-icons">stop</i>
+                                                        <label for="test<%= c.id %>" class="font-size:10px;"><%= c.name %> (서비스 준비중)</label> -->
+                                                    <% else %>
+                                                        <input name="<%= c.id%>" class="single-checkbox" type="checkbox" id="test<%= c.id %>" value="<%=c.name%>" onclick="calculateTotal()"
+                                                        <% if c.name == "소셜" %>
+                                                        checked="checked"
+                                                        <% end %>
+                                                        >
+                                                        <label for="test<%= c.id %>" class="fsize1 black-text"><%= c.name %></label><span class="fsize" id="<%= c.name %>">　[예시보기]　</span>
+
+                                                    <% end %>
+                                                </p>
+                                            <% end %>
+                                        <p class="center fsize" style="margin:10px;">
+                                          *2카테고리 이상 신청시 첫 우편을<br /> 동일하게 신청자분께도 전송해드립니다.
+                                        </p>
+                                        <br />
+                                        <label style="font-size:1.3em;">이용 기간을 선택해주세요</label>
+                                        <select name="week" class="browser-default" id="week-select" onclick="calculateTotal()">
+                                          <option value="0" disabled selected id="maxweek">최대 신청 가능 기간: 0주</option>
+                                          <option value="1" onclick="calculateTotal()">1주</option>
+                                          <option value="2" onclick="calculateTotal()">2주</option>
+                                          <option value="3" onclick="calculateTotal()">3주</option>
+                                          <option value="4" onclick="calculateTotal()">4주</option>
+                                        </select>
+
+                                        <br>
+                                        <p class="bold center fsize" style="border:1.5px solid #24B29A;">총 결제 금액 : <span class="fsize0" id="totalPrice">0</span>원</p>
+
+
+
+                                        <br><br>
+                                        <label style="font-size:1.3em;">
+                                            연락처 또는 카카오톡ID [필수]<br />
+                                        </label>
+                                        <input type="text" name="phone" placeholder="연락처를 입력해주세요!">
+
+
+                                        <input type="hidden" name="user_id" value="<%= current_user.id %>">
+                                    <br>
+                                    <br><br>
+                                    <p>
+                                      <input type="checkbox" id="agree" onchange="document.getElementById('sendNewSms').disabled = !this.checked;" />
+                                      <label for="agree" style="color:#000;">
+
+                                          <span style="font-size:1.2em;">서비스 이용약관 동의</span>
+
+                                      </label>
+                                    </p>
+                                    <input type="checkbox" id="dday">
+                                    <br>
+                                    <div class="center-align">
+                                        <button class="btn waves-effect waves-light rbtn" type="submit" name="action" id="sendNewSms" disabled>신청하기
+                                         </button>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <script>
+                            // $( ".single-checkbox" ).click(function() {
+                            function calculateTotal() {
+                              if ($('.single-checkbox:checked').size() == 1) {
+                                if ($("#week-select option:selected").length) {
+                                  document.getElementById("totalPrice").innerHTML = 3000 * $("#week-select option:selected").val();
+                                }
+                              }
+                              else if ($('.single-checkbox:checked').size() == 2) {
+                                if ($("#week-select option:selected").length) {
+                                  document.getElementById("totalPrice").innerHTML = 5000 * $("#week-select option:selected").val();
+                                }
+                              }
+                              else if ($('.single-checkbox:checked').size() > 2) {
+                                if ($("#week-select option:selected").length) {
+                                  document.getElementById("totalPrice").innerHTML = (5000 + ($('.single-checkbox:checked').size()-2)*1500) * $("#week-select option:selected").val();
+                                }
+
+                              }
+                              else {
+                                document.getElementById("totalPrice").innerHTML = 0 ;
+                              }
+                            }
+
+
+                            $("input[name='s_date']").on("change paste keyup", function() {
+                              dday = new Date($("input[name='s_date']").val())
+                              ddayname = dday.getDay();
+                              if (ddayname == 1 || ddayname == 2 ){
+                                term = 36
+                              }
+                              else {
+                                term = 28
+                              }
+                              var finalday = new Date();
+                              finalday.setDate(dday.getDate() + term);
+
+
+                              var datenow = new Date($.now());
+                              var timeDiff = Math.abs(finalday.getTime() - datenow.getTime());
+                              var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+                              if (diffDays > 30) {
+                                weekleft = 4
+                              } else if (diffDays>23) {
+                                weekleft = 3
+                              } else if (diffDays>16) {
+                                weekleft = 2
+                              } else if (diffDays>9) {
+                                weekleft = 1
+                              } else {
+                                weekleft = 0
+                                alert(diffDays>19);
+                              };
+
+                              document.getElementById("timeleft").innerHTML = diffDays;
+                              document.getElementById("maxweek").innerHTML = "최대 신청 가능 기간: " + weekleft + "주";
+                              });
+
+                            // });
+                            </script>
+
+                    <% else %>
+
+                          <div class="card pink lighten-5">
+                            <div class="card-content">
+
+                                    <div class="center-align">
+                                        <h5><b>
+                                            <%= current_user.name %>님은 <br><br>
+                                            이미 서비스를 신청하셨습니다!<br><br>
+                                          <div class="center-align">
+                                              <p><a class="btn btn-primary btn-lg" href="/service/account" role="button">신청내역 확인하기</a></p>
+                                          </div>
+
+                                        </h5>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+
+                    <% end %>
+
+                <% else %>
+                      <div class="center-align">
+                          <p><a class="btn btn-primary btn-lg " href="/users/sign_up" role="button">회원가입을 먼저 해주세요</a></p>
+                      </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+<%= render 'service/footer' %>
+<%= render 'service/scrt' %>

@@ -1,0 +1,61 @@
+<%= render 'manager/nav' %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+
+                            <h1><%= @category %></h1>
+
+                            <% i = 0 %>
+                            <% Membership.where("category LIKE ?", "%#{@category}%").each do |n| %>
+
+                                <% if n.s_date %>
+                                    <% if n.user.tag_list.include?("MembershipOK") %>
+
+                                        <% if n.s_date.wday == 1 or n.s_date.wday == 2 %>
+                                            <% k = 37.days%>
+                                            <% q = 7.days %>
+                                        <% else %>
+                                            <% k = 28.days%>
+                                            <% q = 5.days %>
+                                        <% end %>
+
+                                        <% if (n.s_date + k) > (DateTime.now + 9.hours) and (n.s_date + q) <= (DateTime.now + 9.hours) %>
+                                            <% i = i+1 %>
+                                            <ul class="collection">
+                                                <% if n.tag_list.include?("#{@category}" + (DateTime.now + 9.hours).to_date.to_s) %>
+                                                   <li class="collection-item">
+                                                       <a href="/manager/user_detail/m<%= n.id %>">
+                                                       <%= n.s_name %>
+                                                       </a>
+
+                                                       <a class="btn disabled">전송완료</a>
+                                                   </li>
+                                                <% else %>
+                                                    <form action="/manager/letter_send_real/<%= n.id %>">
+                                                      <li class="collection-item">
+                                                          <a href="/manager/user_detail/m<%= n.id %>">
+                                                          <%= n.s_name %>
+                                                          </a>
+                                                              <input type="hidden" name="category" value="<%= @category %>">
+                                                             <button class="btn waves-effect waves-light right-align" type="submit" name="action">편지를 보냈으면 클릭!
+                                                              </button>
+
+                                                      </li>
+                                                    </form>
+                                                <% end %>
+                                            </ul>
+                                        <% end %>
+
+                                    <% end %>
+                                <% end %>
+
+                            <% end %>
+                            <h1>총 <%= i %>명 </h1>
+            </div>
+        </div>
+    </div>
+
+
+<%= render 'service/footer' %>
+<%= render 'service/scrt' %>

@@ -1,0 +1,47 @@
+<%= render 'manager/nav' %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+              <div class="card white">
+                <div class="card-content">
+        
+                        <div class="left-align">
+                            <h4><b>공지사항 작성</b>
+                            
+                            </h4>
+                        </div>
+                          <div class="row">
+                    
+                        <form action="/manager/announce_write_real" method="post" class="col s12">
+                            
+                            
+                            <label>제목</label>
+                            <input type="text" name="title">
+                            <br>
+                              <div class="row">
+                                <div class="input-field col s12">
+                                  <textarea name="content" id="textarea1" class="materialize-textarea"></textarea>
+                                  <label for="textarea1">내용</label>
+                                </div>
+                              </div>
+                                            
+                            
+                            <input type="hidden" name="user_id" value="<%= current_user.id %>">
+                            <div class="center-align">
+                                <button class="btn waves-effect waves-light red lighten-2" type="submit" name="action">작성완료
+                                 </button>
+                            </div>
+                        </form>
+                          </div>
+                        
+                    </div>
+                </div>                 
+                
+            </div>
+        </div>
+    </div>
+
+
+<%= render 'service/footer' %>
+<%= render 'service/scrt' %>

@@ -1,0 +1,83 @@
+<%= render 'manager/nav' %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+
+            <br><br>
+                      <div class="card white">
+                        <div class="card-content">
+
+                                <div class="center-align">
+                                    <h4><b>멤버십 수정하기</b>
+
+                                    </h4>
+                                </div>
+
+                                <form action="/manager/membership_update_real/<%= @user.membership.id %>" method="post">
+
+
+                                    <label>훈련병 이름</label>
+                                    <input type="text" name="s_name" value="<%= @user.membership.s_name %>">
+                                    <br>
+
+                                    <label>훈련병 생년월일</label>
+                                    <input type="date" name="s_birth" value="<%= @user.membership.s_birth %>">
+                                    <br>
+
+                                    <label>훈련병 입대날짜</label>
+                                    <input type="date" name="s_date" value="<%= @user.membership.s_date %>">
+
+
+                                    <br>
+
+                                          <label>훈련병 주소</label>
+
+
+                                          <input type="text" name="s_type" value="<%= @user.membership.s_type %>">
+                                    <br>
+                                    <label>뉴스 카테고리<br> (프리미엄 멤버십 신청시 프리미엄만 선택해주세요.)</label><br>
+
+                                        <% p = 0 %>
+                                        <% Category.all.each do |c| %>
+                                            <p>
+                                                <% if c.name == "농구" or c.name == "프리미엄"%>
+                                                    <!--<input name="category<#%= c.id%>" class="single-checkbox" type="checkbox" id="test<#%= c.id %>" value="<#%=c.name%>" disabled="disabled"> -->
+                                                    <!-- <i class="tiny material-icons">stop</i>
+                                                    <label for="test<%= c.id %>" style="font-size:12px"><%= c.name %> (서비스 준비중)</label> -->
+                                                <% else %>
+                                                    <input name="<%= c.id%>" class="single-checkbox" type="checkbox" id="test<%= c.id %>" value="<%=c.name%>"
+                                                    <% if @user.membership.category[p] != nil %>
+                                                    checked="checked"
+                                                    <% end %>
+                                                    >
+                                                    <label for="test<%= c.id %>" style="font-size:12px"><%= c.name %></label>
+                                                <% end %>
+                                            </p>
+                                        <% p = p+1 %>
+                                        <% end %>
+
+                                    <br>
+                                    <label>
+                                        연락처(선택, 카카오톡 ID도 가능) <br>연락처를 입력하시면 먼저 연락을 받으실 수 있습니다.<br>
+                                        입력하지 않으시면 직접 오아미스 카카오톡으로 연락을 주셔야 합니다.
+                                    </label>
+                                    <input type="text" name="phone" value="<%= @user.membership.phone %>">
+
+
+                                    <input type="hidden" name="user_id" value=<%= @user.id %>>
+                                <br>
+                                <div class="center-align">
+                                    <button class="btn waves-effect waves-light red lighten-2" type="submit" name="action">신청하기
+                                     </button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+            </div>
+        </div>
+    </div>
+
+
+<%= render 'service/footer' %>
+<%= render 'service/scrt' %>

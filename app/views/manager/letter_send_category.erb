@@ -1,0 +1,19 @@
+<%= render 'manager/nav' %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <br><br>
+                <h5>오늘의 편지 보내기</h5>
+                  <div class="collection">
+                            <% Category.all.each do |c| %>
+                                <a href="/manager/letter_send_user/<%= c.id %>" class="collection-item"><%= c.name %></a>
+                            <% end %>
+                  </div>
+            </div>
+        </div>
+    </div>
+
+
+<%= render 'service/footer' %>
+<%= render 'service/scrt' %>

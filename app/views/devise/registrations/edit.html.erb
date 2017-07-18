@@ -1,0 +1,71 @@
+<%= render 'service/nav' %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-content">
+                      <h2 class="fsize1">비밀번호 수정하기</h2>
+
+                      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+                        <%= devise_error_messages! %>
+
+                        <div class="field">
+                          <%= f.label :"이메일" %><br />
+                          <%= f.email_field :email, autofocus: true %>
+                        </div>
+
+                        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                        <% end %>
+
+                        <div class="field">
+                          <%= f.label :"비밀번호" %> <b>(변경을 원치 않으시면 빈칸으로 두세요.)</b><br />
+                          <%= f.password_field :password, autocomplete: "off" %>
+                          <% if @minimum_password_length %>
+                            <br />
+                            <em>최소 <%= @minimum_password_length %>글자가 되야합니다.</em>
+                          <% end %>
+                        </div>
+
+                        <div class="field">
+                          <%= f.label :"비밀번호 확인" %><br />
+                          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+                        </div>
+
+                        <div class="field">
+                          <%= f.label :"현재 비밀번호" %><br />
+                          <%= f.password_field :current_password, autocomplete: "off" %>
+                        </div>
+
+                        <div class="actions">
+                          <%= f.submit "변경하기" %>
+                        </div>
+                      <% end %>
+                      <br><br><br>
+                      <h3 class="fsize1">훈련병 정보 삭제 및 회원탈퇴</h3>
+
+                      <% if current_user.membership %>
+
+                        <p>훈련병 정보 삭제하기</p>
+                        <a class="btn" href="/service/membership_delete">훈련병 정보 삭제하기</a>
+                        <br><br><br>
+
+                      <% else %>
+
+                      <p>오아미스 서비스를 탈퇴하시겠어요?
+                      <%= button_to "회원탈퇴하기", registration_path(resource_name), data: { confirm: "정말 탈퇴하시겠습니까?" }, method: :delete %></p>
+
+                      <% end %>
+
+                      <br><br><br>
+                      <%= link_to "돌아가기", :back %>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+<%= render 'service/footer' %>
+<%= render 'service/scrt' %>

@@ -1,0 +1,63 @@
+<%= render 'service/nav' %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                        <h5 class="header"><b><i class="small material-icons">announcement</i>오아미스 공지사항</b></h5><br>
+                        
+                        <ul class="collapsible" data-collapsible="expandable">
+<li>
+                                    
+      <div class="collapsible-header"><i class="small material-icons">announcement</i>오아미스 이용 참고사항</div>
+      <div class="collapsible-body">
+      <p class="grey-text text-darken-3 lighten-3">
+          <i class="tiny material-icons">done</i>
+           오아미스 서비스는 오직 <b class="red-text text-lighten-2" style="font-size:1.5em">논산 육군훈련소 훈련병</b>만을 대상으로 합니다.
+      </p>
+      <p class="grey-text text-darken-3 lighten-3">
+          <i class="tiny material-icons">done</i>
+           오아미스 서비스는 손편지가 아닌 <b class="red-text text-lighten-2" style="font-size:1.5em">인터넷편지</b>로 훈련병에게 전송됩니다.
+      </p>
+
+      <p class="grey-text text-darken-3 lighten-3">
+          <i class="tiny material-icons">done</i>
+           오아미스는 인터넷편지 작성이 가능한 <b class="red-text text-lighten-2" style="font-size:1.5em">훈련병이 입대한 다음 주 목요일</b>부터 전송합니다. 
+      </p>
+      <p class="grey-text text-darken-3 lighten-3">
+          <i class="tiny material-icons">done</i>
+           오아미스는 이슈 담당 큐레이터가 있어 <b class="red-text text-lighten-2" style="font-size:1.5em">큐레이터들이 직접 이슈를 작성 합니다.</b>
+      </p>
+
+      <p class="grey-text text-darken-3 lighten-3">
+          <i class="tiny material-icons">done</i>
+           서비스 확정 이후 <b class="red-text text-lighten-2" style="font-size:1.5em">카테고리를 4개까지</b> 선택할 수 있습니다. 
+      </p>
+      <p class="grey-text text-darken-3 lighten-3">
+          <i class="tiny material-icons">done</i>
+           '시사' 카테고리는 군대 특성상 <b class="red-text text-lighten-2" style="font-size:1.5em">정치적인 이슈는 제외한</b> 사회, 경제, 문화, 세계 등의 뉴스를 전달합니다.
+      </p>
+      <p class="grey-text text-darken-3 lighten-3">
+          <i class="tiny material-icons">done</i>
+           작성된 이슈들은 <b class="red-text text-lighten-2" style="font-size:1.5em">매일 오아미스 홈페이지</b>에서 직접 확인하실 수 있습니다.
+      </p>
+
+      </div>                           
+                                </li>
+                            
+                            <% Board.where(level:0).each do |b|%>
+                                <li>
+                                  <div class="collapsible-header"><i class="material-icons">filter_drama</i><%= b.title %></div>
+                                  <div class="collapsible-body"><%= simple_format b.content.gsub(/\n/, '<br/>') %>
+                                  </div>
+                                </li>
+                                
+                            <% end %>
+
+                        </ul>
+            </div>
+        </div>
+    </div>
+
+
+<%= render 'service/footer' %>
+<%= render 'service/scrt' %>

@@ -1,0 +1,106 @@
+<!-- 결제 창 - 서비스 오픈 후 -->
+    <div class="section no-pad-bot index-banners">
+
+      <div class="container">
+           <div class="row">
+                  <div class="col s12 m12">
+
+
+
+                          <h3 class="center fsize1" style="margin-bottom:0px;color:#24B29A;"><b>신청이 완료됐습니다</b></h3>
+                          <hr style="width:50%;border-color:#24B29A;"/>
+                            <div class="center">
+                              <!-- <p>
+                                <input name="group1" type="radio" id="1week" value=1 onclick="calculateTotal()"/>
+                                <label for="1week"><span class="bold fsize">1주</span></label>
+                                <input name="group1" type="radio" id="2week" value=2 onclick="calculateTotal()"/>
+                                <label for="2week"><span class="bold fsize">2주</span></label>
+                                <input name="group1" type="radio" id="3week" value=3 onclick="calculateTotal()" checked="checked"  />
+                                <label for="3week"><span class="bold fsize">3주</span></label>
+                                <input name="group1" type="radio" id="4week" value=4 onclick="calculateTotal()"/>
+                                <label for="4week"><span class="bold fsize">4주</span></label>
+                              </p><br /> -->
+                              <p class="fsize0">
+                              신청카테고리:<br />
+                              <% current_user.membership.category.each do |k| %>
+                                  <b><%= k %></b>
+                              <% end %>
+                              </p>
+                              <p class="fsize0">
+                              신청 기간:
+                              <b><%= current_user.membership.term %>주</b>
+                              </p>
+                              <br />
+                              <div class="fsize2">총 결제금액: <br /><b class="fsize2" id="totalPrice" style="color:#24B29A;">
+                                <% if current_user.membership.category.grep(String).size == 0 %>
+                                  0</b>원<br />
+                                <% elsif current_user.membership.category.grep(String).size == 1 %>
+                                  <%= 3000*(current_user.membership.term) %></b>원<br />
+                                <% elsif current_user.membership.category.grep(String).size == 2 %>
+                                  <%= 5000*(current_user.membership.term) %></b>원<br />
+                                <% elsif current_user.membership.category.grep(String).size > 2 %>
+                                  <%= (5000+(1500*(current_user.membership.category.grep(String).size-1)))*(current_user.membership.term) %></b>원<br />
+                                <% end %>
+                              </div>
+                              <p class="fsize0">
+                              계좌이체를 통해 결제를 해주세요
+                              <br /><br />
+                              <b>우체국 011-213021-96-681<br />예금주 박정현</b><br />
+                              <span class="fisze">*토스 입금 가능</span>
+                              <br>
+                              <a href="/service/membership_get">
+                                <div class="register center fsize1" style="width:80%;color:#24B29A;">
+                                  <b>입금 완료 버튼</b>
+                                </div>
+                              </a>
+                              <br />
+                              문의사항은<br />카카오톡/전화로 연락주세요!<br />
+                              <span class="fisze">*24시간 연락 가능합니다</span>
+                              <br>
+                              </p>
+
+                            <script>
+                            // function calculateTotal() {
+                              // document.getElementById("totalPrice").innerHTML = <%= current_user.membership.category.grep(String).size * 3000 %> * $(':radio[name="group1"]:checked').val();
+
+                              // var inner = +(document.getElementById("totalPrice").innerHTML);
+                              //
+                              // function calculateTotal() {
+                              //   document.getElementById("totalPrice").innerHTML = inner / 4 * $(':radio[name="group1"]:checked').val();
+                              // }
+                            </script>
+
+                              <a href="http://plus.kakao.com/home/mjdou1z6" target="_blank">
+                                <div class="register center fsize1" style="width:80%;color:#24B29A;">
+                                  <b>카카오톡 바로가기</b>
+                                </div>
+                              </a>
+                              <br />
+                              <a href="tel:050-714-555607" class="hide-on-med-and-up">
+                                <div class="register center fsize1" style="width:80%;color:#24B29A;">
+                                  <b>통화 바로가기</b>
+                                </div>
+                              </a>
+                              <a class="hide-on-small-only">
+                                <div class="register center fsize1" style="width:80%;color:#24B29A;">
+                                  <b>0507-1455-5607로 전화주세요</b>
+                                </div>
+                              </a>
+                          </div>
+                        <br>
+                  </div>
+          </div>
+
+
+      </div>
+    </div>
+
+<script>
+$( document ).ready(function() {
+  swal(
+    '등록 완료!',
+    '결제를 해주세요!',
+    'success'
+  )
+});
+</script>

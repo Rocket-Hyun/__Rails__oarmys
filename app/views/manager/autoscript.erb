@@ -1,0 +1,1226 @@
+<%= render 'manager/nav' %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+
+            	<h2><%= (DateTime.now + 9.hours).to_date %>의 자동화코드</h2>
+            	<br>
+            	<br>
+                <h3>시사코드</h3>
+                <p>
+
+                        <!--replace < by &lt; and > by &gt;-->
+
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"&gt;
+&lt;head profile="http://selenium-ide.openqa.org/profiles/test-case"&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
+&lt;link rel="selenium.base" href="http://bidoolgi.net/" /&gt;
+&lt;title&gt;send_example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;table cellpadding="1" cellspacing="1" border="1"&gt;
+&lt;thead&gt;
+&lt;tr&gt;&lt;td rowspan="1" colspan="3"&gt;send_example&lt;/td&gt;&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+	&lt;td&gt;click&lt;/td&gt;
+	&lt;td&gt;css=span.btn.btn-primary&lt;/td&gt;
+	&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td&gt;type&lt;/td&gt;
+	&lt;td&gt;id=inputEmail&lt;/td&gt;
+	&lt;td&gt;sisa@oarmys.net&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td&gt;type&lt;/td&gt;
+	&lt;td&gt;id=inputPassword&lt;/td&gt;
+	&lt;td&gt;dhdkaltm&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td&gt;click&lt;/td&gt;
+	&lt;td&gt;id=requireLogin&lt;/td&gt;
+	&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td&gt;waitForElementPresent&lt;/td&gt;
+	&lt;td&gt;link=편지 쓰기&lt;/td&gt;
+	&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+
+
+
+
+
+<!-- 여기까지 기사복사 -->
+
+<!-- 추가 인원은 여기 밑에를 복붙 -->
+<% cycle =1%>
+<% numberofp = 1 %>
+<% Membership.where("category LIKE ?", "%시사%").each do |n| %>
+   <% if n.s_date %>
+        <% if n.user.tag_list.include?("MembershipOK") %>
+
+            <% if n.s_date.wday == 1 or n.s_date.wday == 2 %>
+                <% k = 37.days%>
+                <% q = 7.days %>
+            <% else %>
+                <% k = 28.days%>
+                <% q = 5.days %>
+            <% end %>
+
+            <% if (n.s_date + k) > (DateTime.now + 9.hours) and (n.s_date + q) <= (DateTime.now + 9.hours) %>
+
+
+
+	            <% if cycle == 1 %>
+
+
+						&lt;tr&gt;
+							&lt;td&gt;click&lt;/td&gt;
+							&lt;td&gt;link=편지 쓰기&lt;/td&gt;
+							&lt;td&gt;&lt;/td&gt;
+						&lt;/tr&gt;
+
+						<!-- 기사 바꾸고 여기서부터 복사! -->
+						<% Letter.where(category_id:1).where(l_date: (DateTime.now + 9.hours).to_date).each do |l| %>
+							&lt;tr&gt;
+								&lt;td&gt;waitForAllButtons&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;type&lt;/td&gt;
+								&lt;td&gt;id=articleTitle&lt;/td&gt;
+								<!-- &lt;td&gt;<%= (DateTime.now + 9.hours).to_date %>의 시사뉴스&lt;/td&gt; -->
+								&lt;td&gt;오아미스가 드리는 마지막 편지&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;type&lt;/td&gt;
+								&lt;td&gt;id=articleText&lt;/td&gt;
+								&lt;td&gt;<%= l.content %>&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;type&lt;/td&gt;
+								&lt;td&gt;id=articlePassword&lt;/td&gt;
+								&lt;td&gt;0000&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;click&lt;/td&gt;
+								&lt;td&gt;css=#sendLetterIcon &gt; img&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;storeConfirmation&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;waitForText&lt;/td&gt;
+								&lt;td&gt;css=#letterResult &gt; p&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+						<% end %>
+
+					&lt;tr&gt;
+						&lt;td&gt;waitForAllButtons&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td&gt;click&lt;/td&gt;
+						&lt;td&gt;id=goFriendList&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td&gt;waitForAllButtons&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+
+
+					<% cycle = cycle+1 %>
+
+				<% else %>
+
+					<% numberofp = numberofp+1 %>
+					&lt;tr&gt;
+						&lt;td&gt;click&lt;/td&gt;
+						&lt;td&gt;xpath=(//a[contains(text(),'편지 쓰기')])[<%= numberofp %>]&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+
+						<!-- 기사 바꾸고 여기서부터 복사! -->
+						<% Letter.where(category_id:1).where(l_date: (DateTime.now + 9.hours).to_date).each do |l| %>
+							&lt;tr&gt;
+								&lt;td&gt;waitForAllButtons&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;type&lt;/td&gt;
+								&lt;td&gt;id=articleTitle&lt;/td&gt;
+								<!-- &lt;td&gt;<%= (DateTime.now + 9.hours).to_date %>의 시사뉴스&lt;/td&gt; -->
+								&lt;td&gt;오아미스가 드리는 마지막 편지&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;type&lt;/td&gt;
+								&lt;td&gt;id=articleText&lt;/td&gt;
+								&lt;td&gt;<%= l.content %>&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;type&lt;/td&gt;
+								&lt;td&gt;id=articlePassword&lt;/td&gt;
+								&lt;td&gt;0000&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;click&lt;/td&gt;
+								&lt;td&gt;css=#sendLetterIcon &gt; img&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;storeConfirmation&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;waitForText&lt;/td&gt;
+								&lt;td&gt;css=#letterResult &gt; p&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+						<% end %>
+
+					&lt;tr&gt;
+						&lt;td&gt;waitForAllButtons&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td&gt;click&lt;/td&gt;
+						&lt;td&gt;id=goFriendList&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td&gt;waitForAllButtons&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+
+				<% end %>
+				<!-- 순환 조건문 끝 -->
+
+
+
+			<% end %>
+		<% end %>
+	<% end %>
+<% end %>
+
+
+
+
+
+
+
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+                </p>
+
+<h3>연예코드</h3>
+                <p>
+
+
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"&gt;
+&lt;head profile="http://selenium-ide.openqa.org/profiles/test-case"&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
+&lt;link rel="selenium.base" href="http://bidoolgi.net/" /&gt;
+&lt;title&gt;send_example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;table cellpadding="1" cellspacing="1" border="1"&gt;
+&lt;thead&gt;
+&lt;tr&gt;&lt;td rowspan="1" colspan="3"&gt;send_example&lt;/td&gt;&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+	&lt;td&gt;click&lt;/td&gt;
+	&lt;td&gt;css=span.btn.btn-primary&lt;/td&gt;
+	&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td&gt;type&lt;/td&gt;
+	&lt;td&gt;id=inputEmail&lt;/td&gt;
+	&lt;td&gt;star@oarmys.net&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td&gt;type&lt;/td&gt;
+	&lt;td&gt;id=inputPassword&lt;/td&gt;
+	&lt;td&gt;dhdkaltm&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td&gt;click&lt;/td&gt;
+	&lt;td&gt;id=requireLogin&lt;/td&gt;
+	&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td&gt;waitForElementPresent&lt;/td&gt;
+	&lt;td&gt;link=편지 쓰기&lt;/td&gt;
+	&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+
+
+
+
+
+<!-- 여기까지 기사복사 -->
+
+<!-- 추가 인원은 여기 밑에를 복붙 -->
+<% cycle =1%>
+<% numberofp = 1 %>
+<% Membership.where("category LIKE ?", "%연예%").each do |n| %>
+   <% if n.s_date %>
+        <% if n.user.tag_list.include?("MembershipOK") %>
+
+            <% if n.s_date.wday == 1 or n.s_date.wday == 2 %>
+                <% k = 37.days%>
+                <% q = 7.days %>
+            <% else %>
+                <% k = 28.days%>
+                <% q = 5.days %>
+            <% end %>
+
+            <% if (n.s_date + k) > (DateTime.now + 9.hours) and (n.s_date + q) <= (DateTime.now + 9.hours) %>
+
+
+
+	            <% if cycle == 1 %>
+
+
+						&lt;tr&gt;
+							&lt;td&gt;click&lt;/td&gt;
+							&lt;td&gt;link=편지 쓰기&lt;/td&gt;
+							&lt;td&gt;&lt;/td&gt;
+						&lt;/tr&gt;
+
+						<!-- 기사 바꾸고 여기서부터 복사! -->
+						<% Letter.where(category_id:2).where(l_date: (DateTime.now + 9.hours).to_date).each do |l| %>
+							&lt;tr&gt;
+								&lt;td&gt;waitForAllButtons&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;type&lt;/td&gt;
+								&lt;td&gt;id=articleTitle&lt;/td&gt;
+								&lt;td&gt;<%= (DateTime.now + 9.hours).to_date %>의 연예뉴스&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;type&lt;/td&gt;
+								&lt;td&gt;id=articleText&lt;/td&gt;
+								&lt;td&gt;<%= l.content %>&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;type&lt;/td&gt;
+								&lt;td&gt;id=articlePassword&lt;/td&gt;
+								&lt;td&gt;0000&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;click&lt;/td&gt;
+								&lt;td&gt;css=#sendLetterIcon &gt; img&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;storeConfirmation&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;waitForText&lt;/td&gt;
+								&lt;td&gt;css=#letterResult &gt; p&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+
+
+						<% end %>
+
+					&lt;tr&gt;
+						&lt;td&gt;waitForAllButtons&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td&gt;click&lt;/td&gt;
+						&lt;td&gt;id=goFriendList&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td&gt;waitForAllButtons&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+
+
+					<% cycle = cycle+1 %>
+
+				<% else %>
+
+					<% numberofp = numberofp+1 %>
+					&lt;tr&gt;
+						&lt;td&gt;click&lt;/td&gt;
+						&lt;td&gt;xpath=(//a[contains(text(),'편지 쓰기')])[<%= numberofp %>]&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+
+						<!-- 기사 바꾸고 여기서부터 복사! -->
+						<% Letter.where(category_id:2).where(l_date: (DateTime.now + 9.hours).to_date).each do |l| %>
+							&lt;tr&gt;
+								&lt;td&gt;waitForAllButtons&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;type&lt;/td&gt;
+								&lt;td&gt;id=articleTitle&lt;/td&gt;
+								&lt;td&gt;<%= (DateTime.now + 9.hours).to_date %>의 연예뉴스&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;type&lt;/td&gt;
+								&lt;td&gt;id=articleText&lt;/td&gt;
+								&lt;td&gt;<%= l.content %>&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;type&lt;/td&gt;
+								&lt;td&gt;id=articlePassword&lt;/td&gt;
+								&lt;td&gt;0000&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;click&lt;/td&gt;
+								&lt;td&gt;css=#sendLetterIcon &gt; img&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;storeConfirmation&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;waitForText&lt;/td&gt;
+								&lt;td&gt;css=#letterResult &gt; p&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+						<% end %>
+
+					&lt;tr&gt;
+						&lt;td&gt;waitForAllButtons&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td&gt;click&lt;/td&gt;
+						&lt;td&gt;id=goFriendList&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td&gt;waitForAllButtons&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+
+				<% end %>
+				<!-- 순환 조건문 끝 -->
+
+
+
+			<% end %>
+		<% end %>
+	<% end %>
+<% end %>
+
+
+
+
+
+
+
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+                </p>
+
+
+<h3>축구코드</h3>
+                <p>
+
+
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"&gt;
+&lt;head profile="http://selenium-ide.openqa.org/profiles/test-case"&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
+&lt;link rel="selenium.base" href="http://bidoolgi.net/" /&gt;
+&lt;title&gt;send_example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;table cellpadding="1" cellspacing="1" border="1"&gt;
+&lt;thead&gt;
+&lt;tr&gt;&lt;td rowspan="1" colspan="3"&gt;send_example&lt;/td&gt;&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+	&lt;td&gt;click&lt;/td&gt;
+	&lt;td&gt;css=span.btn.btn-primary&lt;/td&gt;
+	&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td&gt;type&lt;/td&gt;
+	&lt;td&gt;id=inputEmail&lt;/td&gt;
+	&lt;td&gt;soccer@oarmys.net&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td&gt;type&lt;/td&gt;
+	&lt;td&gt;id=inputPassword&lt;/td&gt;
+	&lt;td&gt;dhdkaltm&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td&gt;click&lt;/td&gt;
+	&lt;td&gt;id=requireLogin&lt;/td&gt;
+	&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td&gt;waitForElementPresent&lt;/td&gt;
+	&lt;td&gt;link=편지 쓰기&lt;/td&gt;
+	&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+
+
+
+
+
+<!-- 여기까지 기사복사 -->
+
+<!-- 추가 인원은 여기 밑에를 복붙 -->
+<% cycle =1%>
+<% numberofp = 1 %>
+<% Membership.where("category LIKE ?", "%축구%").each do |n| %>
+   <% if n.s_date %>
+        <% if n.user.tag_list.include?("MembershipOK") %>
+
+
+
+            <% if n.s_date.wday == 1 or n.s_date.wday == 2 %>
+                <% k = 37.days%>
+                <% q = 7.days %>
+            <% else %>
+                <% k = 28.days%>
+                <% q = 5.days %>
+            <% end %>
+
+            <% if (n.s_date + k) > (DateTime.now + 9.hours) and (n.s_date + q) <= (DateTime.now + 9.hours) %>
+
+
+
+	            <% if cycle == 1 %>
+
+
+						&lt;tr&gt;
+							&lt;td&gt;click&lt;/td&gt;
+							&lt;td&gt;link=편지 쓰기&lt;/td&gt;
+							&lt;td&gt;&lt;/td&gt;
+						&lt;/tr&gt;
+
+						<!-- 기사 바꾸고 여기서부터 복사! -->
+						<% Letter.where(category_id:3).where(l_date: (DateTime.now + 9.hours).to_date).each do |l| %>
+							&lt;tr&gt;
+								&lt;td&gt;waitForAllButtons&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;type&lt;/td&gt;
+								&lt;td&gt;id=articleTitle&lt;/td&gt;
+								&lt;td&gt;<%= (DateTime.now + 9.hours).to_date %>의 축구뉴스&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;type&lt;/td&gt;
+								&lt;td&gt;id=articleText&lt;/td&gt;
+								&lt;td&gt;<%= l.content %>&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;type&lt;/td&gt;
+								&lt;td&gt;id=articlePassword&lt;/td&gt;
+								&lt;td&gt;0000&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;click&lt;/td&gt;
+								&lt;td&gt;css=#sendLetterIcon &gt; img&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;storeConfirmation&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;waitForText&lt;/td&gt;
+								&lt;td&gt;css=#letterResult &gt; p&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+						<% end %>
+
+					&lt;tr&gt;
+						&lt;td&gt;waitForAllButtons&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td&gt;click&lt;/td&gt;
+						&lt;td&gt;id=goFriendList&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td&gt;waitForAllButtons&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+
+
+					<% cycle = cycle+1 %>
+
+				<% else %>
+
+					<% numberofp = numberofp+1 %>
+					&lt;tr&gt;
+						&lt;td&gt;click&lt;/td&gt;
+						&lt;td&gt;xpath=(//a[contains(text(),'편지 쓰기')])[<%= numberofp %>]&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+
+						<!-- 기사 바꾸고 여기서부터 복사! -->
+						<% Letter.where(category_id:3).where(l_date: (DateTime.now + 9.hours).to_date).each do |l| %>
+							&lt;tr&gt;
+								&lt;td&gt;waitForAllButtons&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;type&lt;/td&gt;
+								&lt;td&gt;id=articleTitle&lt;/td&gt;
+								&lt;td&gt;<%= (DateTime.now + 9.hours).to_date %>의 축구뉴스&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;type&lt;/td&gt;
+								&lt;td&gt;id=articleText&lt;/td&gt;
+								&lt;td&gt;<%= l.content %>&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;type&lt;/td&gt;
+								&lt;td&gt;id=articlePassword&lt;/td&gt;
+								&lt;td&gt;0000&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;click&lt;/td&gt;
+								&lt;td&gt;css=#sendLetterIcon &gt; img&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;storeConfirmation&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;waitForText&lt;/td&gt;
+								&lt;td&gt;css=#letterResult &gt; p&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+						<% end %>
+
+					&lt;tr&gt;
+						&lt;td&gt;waitForAllButtons&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td&gt;click&lt;/td&gt;
+						&lt;td&gt;id=goFriendList&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td&gt;waitForAllButtons&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+
+				<% end %>
+				<!-- 순환 조건문 끝 -->
+
+
+
+			<% end %>
+		<% end %>
+	<% end %>
+<% end %>
+
+
+
+
+
+
+
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+</p>
+
+
+
+
+
+<h3>야구코드</h3>
+                <p>
+
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"&gt;
+&lt;head profile="http://selenium-ide.openqa.org/profiles/test-case"&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
+&lt;link rel="selenium.base" href="http://bidoolgi.net/" /&gt;
+&lt;title&gt;send_example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;table cellpadding="1" cellspacing="1" border="1"&gt;
+&lt;thead&gt;
+&lt;tr&gt;&lt;td rowspan="1" colspan="3"&gt;send_example&lt;/td&gt;&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+	&lt;td&gt;click&lt;/td&gt;
+	&lt;td&gt;css=span.btn.btn-primary&lt;/td&gt;
+	&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td&gt;type&lt;/td&gt;
+	&lt;td&gt;id=inputEmail&lt;/td&gt;
+	&lt;td&gt;baseball@oarmys.net&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td&gt;type&lt;/td&gt;
+	&lt;td&gt;id=inputPassword&lt;/td&gt;
+	&lt;td&gt;dhdkaltm&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td&gt;click&lt;/td&gt;
+	&lt;td&gt;id=requireLogin&lt;/td&gt;
+	&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td&gt;waitForElementPresent&lt;/td&gt;
+	&lt;td&gt;link=편지 쓰기&lt;/td&gt;
+	&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+
+
+
+
+
+<!-- 여기까지 기사복사 -->
+
+<!-- 추가 인원은 여기 밑에를 복붙 -->
+<% cycle =1%>
+<% numberofp = 1 %>
+<% Membership.where("category LIKE ?", "%야구%").each do |n| %>
+   <% if n.s_date %>
+        <% if n.user.tag_list.include?("MembershipOK") %>
+
+
+
+            <% if n.s_date.wday == 1 or n.s_date.wday == 2 %>
+                <% k = 37.days%>
+                <% q = 7.days %>
+            <% else %>
+                <% k = 28.days%>
+                <% q = 5.days %>
+            <% end %>
+
+            <% if (n.s_date + k) > (DateTime.now + 9.hours) and (n.s_date + q) <= (DateTime.now + 9.hours) %>
+
+
+
+	            <% if cycle == 1 %>
+
+
+						&lt;tr&gt;
+							&lt;td&gt;click&lt;/td&gt;
+							&lt;td&gt;link=편지 쓰기&lt;/td&gt;
+							&lt;td&gt;&lt;/td&gt;
+						&lt;/tr&gt;
+
+						<!-- 기사 바꾸고 여기서부터 복사! -->
+						<% Letter.where(category_id:4).where(l_date: (DateTime.now + 9.hours).to_date).each do |l| %>
+							&lt;tr&gt;
+								&lt;td&gt;waitForAllButtons&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;type&lt;/td&gt;
+								&lt;td&gt;id=articleTitle&lt;/td&gt;
+								&lt;td&gt;<%= (DateTime.now + 9.hours).to_date %>의 야구뉴스&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;type&lt;/td&gt;
+								&lt;td&gt;id=articleText&lt;/td&gt;
+								&lt;td&gt;<%= l.content %>&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;type&lt;/td&gt;
+								&lt;td&gt;id=articlePassword&lt;/td&gt;
+								&lt;td&gt;0000&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;click&lt;/td&gt;
+								&lt;td&gt;css=#sendLetterIcon &gt; img&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;storeConfirmation&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;waitForText&lt;/td&gt;
+								&lt;td&gt;css=#letterResult &gt; p&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+						<% end %>
+
+					&lt;tr&gt;
+						&lt;td&gt;waitForAllButtons&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td&gt;click&lt;/td&gt;
+						&lt;td&gt;id=goFriendList&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td&gt;waitForAllButtons&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+
+
+					<% cycle = cycle+1 %>
+
+				<% else %>
+
+					<% numberofp = numberofp+1 %>
+					&lt;tr&gt;
+						&lt;td&gt;click&lt;/td&gt;
+						&lt;td&gt;xpath=(//a[contains(text(),'편지 쓰기')])[<%= numberofp %>]&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+
+						<!-- 기사 바꾸고 여기서부터 복사! -->
+						<% Letter.where(category_id:4).where(l_date: (DateTime.now + 9.hours).to_date).each do |l| %>
+							&lt;tr&gt;
+								&lt;td&gt;waitForAllButtons&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;type&lt;/td&gt;
+								&lt;td&gt;id=articleTitle&lt;/td&gt;
+								&lt;td&gt;<%= (DateTime.now + 9.hours).to_date %>의 야구뉴스&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;type&lt;/td&gt;
+								&lt;td&gt;id=articleText&lt;/td&gt;
+								&lt;td&gt;<%= l.content %>&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;type&lt;/td&gt;
+								&lt;td&gt;id=articlePassword&lt;/td&gt;
+								&lt;td&gt;0000&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;click&lt;/td&gt;
+								&lt;td&gt;css=#sendLetterIcon &gt; img&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;storeConfirmation&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;waitForText&lt;/td&gt;
+								&lt;td&gt;css=#letterResult &gt; p&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+						<% end %>
+
+					&lt;tr&gt;
+						&lt;td&gt;waitForAllButtons&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td&gt;click&lt;/td&gt;
+						&lt;td&gt;id=goFriendList&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td&gt;waitForAllButtons&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+
+				<% end %>
+				<!-- 순환 조건문 끝 -->
+
+
+
+			<% end %>
+		<% end %>
+	<% end %>
+<% end %>
+
+
+
+
+
+
+
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+                </p>
+
+
+
+<h3>프리미엄 코드</h3>
+<p>
+
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"&gt;
+&lt;head profile="http://selenium-ide.openqa.org/profiles/test-case"&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
+&lt;link rel="selenium.base" href="http://bidoolgi.net/" /&gt;
+&lt;title&gt;send_example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;table cellpadding="1" cellspacing="1" border="1"&gt;
+&lt;thead&gt;
+&lt;tr&gt;&lt;td rowspan="1" colspan="3"&gt;send_example&lt;/td&gt;&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+	&lt;td&gt;click&lt;/td&gt;
+	&lt;td&gt;css=span.btn.btn-primary&lt;/td&gt;
+	&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td&gt;type&lt;/td&gt;
+	&lt;td&gt;id=inputEmail&lt;/td&gt;
+	&lt;td&gt;park@naver.com&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td&gt;type&lt;/td&gt;
+	&lt;td&gt;id=inputPassword&lt;/td&gt;
+	&lt;td&gt;139742685&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td&gt;click&lt;/td&gt;
+	&lt;td&gt;id=requireLogin&lt;/td&gt;
+	&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td&gt;waitForElementPresent&lt;/td&gt;
+	&lt;td&gt;link=편지 쓰기&lt;/td&gt;
+	&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+
+
+
+
+
+<!-- 여기까지 기사복사 -->
+
+<!-- 추가 인원은 여기 밑에를 복붙 -->
+<% cycle =1%>
+<% numberofp = 1 %>
+<% Membership.where("category LIKE ?", "%프리미엄%").each do |n| %>
+   <% if n.s_date %>
+        <% if n.user.tag_list.include?("MembershipOK") %>
+
+
+            <% if n.s_date.wday == 1 or n.s_date.wday == 2 %>
+                <% k = 37.days%>
+                <% q = 7.days %>
+            <% else %>
+                <% k = 28.days%>
+                <% q = 5.days %>
+            <% end %>
+
+            <% if (n.s_date + k) > (DateTime.now + 9.hours) and (n.s_date + q) <= (DateTime.now + 9.hours) %>
+
+
+
+	            <% if cycle == 1 %>
+
+
+						&lt;tr&gt;
+							&lt;td&gt;click&lt;/td&gt;
+							&lt;td&gt;link=편지 쓰기&lt;/td&gt;
+							&lt;td&gt;&lt;/td&gt;
+						&lt;/tr&gt;
+
+						<!-- 기사 바꾸고 여기서부터 복사! -->
+						<% Letter.where(category_id:6).where(l_date: (DateTime.now + 9.hours).to_date).each do |l| %>
+							&lt;tr&gt;
+								&lt;td&gt;waitForAllButtons&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;type&lt;/td&gt;
+								&lt;td&gt;id=articleTitle&lt;/td&gt;
+								&lt;td&gt;<%= (DateTime.now + 9.hours).to_date %>의 프리미엄뉴스&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;type&lt;/td&gt;
+								&lt;td&gt;id=articleText&lt;/td&gt;
+								&lt;td&gt;<%= l.content %>&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;type&lt;/td&gt;
+								&lt;td&gt;id=articlePassword&lt;/td&gt;
+								&lt;td&gt;0000&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;click&lt;/td&gt;
+								&lt;td&gt;css=#sendLetterIcon &gt; img&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;storeConfirmation&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;waitForText&lt;/td&gt;
+								&lt;td&gt;css=#letterResult &gt; p&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+						<% end %>
+
+					&lt;tr&gt;
+						&lt;td&gt;waitForAllButtons&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td&gt;click&lt;/td&gt;
+						&lt;td&gt;id=goFriendList&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td&gt;waitForAllButtons&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+
+
+					<% cycle = cycle+1 %>
+
+				<% else %>
+
+					<% numberofp = numberofp+1 %>
+					&lt;tr&gt;
+						&lt;td&gt;click&lt;/td&gt;
+						&lt;td&gt;xpath=(//a[contains(text(),'편지 쓰기')])[<%= numberofp %>]&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+
+						<!-- 기사 바꾸고 여기서부터 복사! -->
+						<% Letter.where(category_id:6).where(l_date: (DateTime.now + 9.hours).to_date).each do |l| %>
+							&lt;tr&gt;
+								&lt;td&gt;waitForAllButtons&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;type&lt;/td&gt;
+								&lt;td&gt;id=articleTitle&lt;/td&gt;
+								&lt;td&gt;<%= (DateTime.now + 9.hours).to_date %>의 프리미엄뉴스&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;type&lt;/td&gt;
+								&lt;td&gt;id=articleText&lt;/td&gt;
+								&lt;td&gt;<%= l.content %>&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;type&lt;/td&gt;
+								&lt;td&gt;id=articlePassword&lt;/td&gt;
+								&lt;td&gt;0000&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;click&lt;/td&gt;
+								&lt;td&gt;css=#sendLetterIcon &gt; img&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;storeConfirmation&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td&gt;waitForText&lt;/td&gt;
+								&lt;td&gt;css=#letterResult &gt; p&lt;/td&gt;
+								&lt;td&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+						<% end %>
+
+					&lt;tr&gt;
+						&lt;td&gt;waitForAllButtons&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td&gt;click&lt;/td&gt;
+						&lt;td&gt;id=goFriendList&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td&gt;waitForAllButtons&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+
+				<% end %>
+				<!-- 순환 조건문 끝 -->
+
+
+
+			<% end %>
+		<% end %>
+	<% end %>
+<% end %>
+
+
+
+
+
+
+
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+</p>
+
+<h3>회원 삭제 스크립트</h3>
+<p>
+	&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"&gt;
+&lt;head profile="http://selenium-ide.openqa.org/profiles/test-case"&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
+&lt;link rel="selenium.base" href="http://oarmys.net/" /&gt;
+&lt;title&gt;delete&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;table cellpadding="1" cellspacing="1" border="1"&gt;
+&lt;thead&gt;
+&lt;tr&gt;&lt;td rowspan="1" colspan="3"&gt;delete&lt;/td&gt;&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+	&lt;td&gt;open&lt;/td&gt;
+	&lt;td&gt;/manager/users&lt;/td&gt;
+	&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+
+
+<% User.all.each do |u| %>
+
+<% unless u.membership %>
+
+<% unless u.tag_list.include?("master") %>
+&lt;tr&gt;
+	&lt;td&gt;click&lt;/td&gt;
+	&lt;td&gt;link=<%= u.name %>&lt;/td&gt;
+	&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+	&lt;td&gt;waitForElementPresent&lt;/td&gt;
+	&lt;td&gt;link=[회원 삭제]&lt;/td&gt;
+	&lt;td&gt;&lt;/td&gt;
+&lt;/tr>
+
+&lt;tr&gt;
+	&lt;td&gt;click&lt;/td&gt;
+	&lt;td&gt;link=[회원 삭제]&lt;/td&gt;
+	&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+
+&lt;tr&gt;
+	&lt;td&gt;waitForElementPresent&lt;/td&gt;
+	&lt;td&gt;css=div.collapsible-header.active&lt;/td&gt;
+	&lt;td&gt;&lt;/td&gt;
+&lt;/tr>
+
+
+&lt;tr&gt;
+	&lt;td&gt;click&lt;/td&gt;
+	&lt;td&gt;//div/div/ul/li[2]/div&lt;/td&gt;
+	&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+
+
+<% end %>
+
+<% end %>
+
+<% end %>
+
+
+
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</p>
+
+            </div>
+        </div>
+    </div>
+
+
+
+<%= render 'service/footer' %>
+<%= render 'service/scrt' %>

@@ -1,0 +1,123 @@
+<header>
+
+
+<% if user_signed_in? %>
+  <!-- <ul id="dropdown0" class="dropdown-content">
+    <li><a href="/service/index">전송된 뉴스</a></li>
+  </ul> -->
+  <ul id="dropdown2" class="dropdown-content">
+    <li><a href="http://plus.kakao.com/home/mjdou1z6" target="_blank">카톡으로 문의하기</a></li>
+    <li class="divider"></li>
+    <li><a href="/service/review">이용후기</a></li>
+  </ul>
+  <ul id="dropdown3" class="dropdown-content">
+      <li><a href="/service/account">계정 정보</a></li>
+      <li class="divider"></li>
+      <li><a href="/users/sign_out">로그아웃</a></li>
+  </ul>
+
+  <nav style="background-color:#24B29A;">
+    <div class="nav-wrapper">
+      <a href="/service/index" class="brand-logo"><img style="width:180px;" src="<%= image_path 'logo1.png'%>"></a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+
+      <ul class="right hide-on-med-and-down">
+        <li>
+            <a class="white-text" href="/service/index">
+                 <i class=" Tiny material-icons left">loyalty</i>전송된 소식
+            </a>
+        </li>
+        <!--<li>-->
+        <!--    <a class="white-text dropdown-button" data-activates="dropdown1" data-beloworigin="true">-->
+        <!--         <i class=" Tiny material-icons left">thumb_up</i>오아미스 SNS<i class="material-icons right">arrow_drop_down</i>-->
+        <!--    </a>-->
+        <!--</li>-->
+        <li>
+            <a class="white-text dropdown-button" data-activates="dropdown2" data-beloworigin="true">
+                 <i class=" Tiny material-icons left">info</i>문의하기<i class="material-icons right">arrow_drop_down</i>
+            </a>
+        </li>
+        <li>
+            <a class="white-text dropdown-button" data-activates="dropdown3" data-beloworigin="true">
+                 <i class=" Tiny material-icons left">perm_identity</i>계정관리<i class="material-icons right">arrow_drop_down</i>
+            </a>
+        </li>
+      </ul>
+
+
+      <ul class="collapsible side-nav black-text" id="mobile-demo" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header"><i class="material-icons">loyalty</i>편지함</div>
+          <div class="collapsible-body">
+                <ul>
+                  <li><a href="/service/index">전송된 뉴스</a></li>
+                </ul>
+          </div>
+        </li>
+
+
+        <li>
+          <div class="collapsible-header"><i class="material-icons">info</i>문의하기</div>
+          <div class="collapsible-body">
+                <ul>
+                  <li><a href="http://plus.kakao.com/home/mjdou1z6">카톡으로 문의하기</a></li>
+                  <li><a href="tel:050-714-555607">전화로 문의하기</a></li>
+                  <li><a href="/service/review">이용후기</a></li>
+                </ul>
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="material-icons">perm_identity</i>계정관리</div>
+          <div class="collapsible-body">
+                <ul>
+                    <li><a href="/service/account">계정 정보 및 멤버십</a></li>
+                    <li><a href="/users/sign_out">로그아웃</a></li>
+                </ul>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </nav>
+
+<% else %>
+
+<nav style="background-color:#24B29A;">
+  <div class="nav-wrapper">
+    <a href="/service/index" class="brand-logo"><img style="width:180px;" src="<%= image_path 'logo1.png'%>"></a>
+    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+
+    <ul class="right hide-on-med-and-down">
+      <li>
+          <a class="white-text" href="/users/sign_in">
+               <i class=" Tiny material-icons left">perm_identity</i>로그인
+          </a>
+      </li>
+      <li>
+          <a class="white-text" href="/service/review">
+               <i class=" Tiny material-icons left">chat_bubble_outline</i>이용후기
+          </a>
+      </li>
+    </ul>
+
+
+    <ul class="collapsible side-nav black-text" id="mobile-demo" data-collapsible="accordion">
+      <li>
+        <div class="collapsible-header"><i class="material-icons">perm_identity</i>계정관리</div>
+        <div class="collapsible-body">
+              <ul>
+                  <li><a href="/users/sign_in">로그인</a></li>
+              </ul>
+        </div>
+      </li>
+        <li>
+          <div class="collapsible-header sidereview"><i class="material-icons">chat_bubble_outline</i>이용후기</div>
+        </li>
+    </ul>
+
+  </div>
+</nav>
+<% end %>
+
+
+</header>

@@ -1,0 +1,52 @@
+<%= render 'manager/nav' %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+
+                            <h1>기사 등록하기</h1>
+                        <form action="/manager/letter_write_real" method="post" enctype="multipart/form-data">
+
+
+
+                            <label>기사 카테고리</label>
+                            <select name="category">
+                                <option value="" disabled selected>카테고리를 선택하세요</option>
+                                <% Category.all.each do |c| %>
+                                    <% if c.name == "시사" %>
+                                        <option selected="selected"><%= c.name %></option>
+                                    <% else %>
+                                        <option><%= c.name %></option>
+                                    <% end %>
+                                <% end %>
+                            </select>
+                            <br />
+
+                            <label>기사 날짜 </label>
+                            <input type="date" name="date" class="datepicker" value="<%= (DateTime.now + 9.hours).to_date %>">
+
+                            <br>
+                            <label>기사 사진</label><br />
+                            <input type="file" accept="image/*" class="form-control" name="pic">
+                            <br><br />
+                            <label>기사 사진 출처</label>
+                            <input class="form-control" name="pic_url">
+                            <br>
+                            <label>기사 제목</label>
+                            <input class="form-control" name="title"><br>
+
+
+                            <label for="textarea1">기사 내용</label>
+                            <textarea id="textarea1" class="materialize-textarea" rows="3" name="content"></textarea>
+
+                            <input type="submit">
+                        </form>
+
+
+            </div>
+        </div>
+    </div>
+
+
+<%= render 'service/footer' %>
+<%= render 'service/scrt' %>

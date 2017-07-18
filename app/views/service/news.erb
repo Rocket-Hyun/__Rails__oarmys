@@ -1,0 +1,31 @@
+<%= render 'service/nav' %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                        <h5 class="header"><b><i class="small material-icons">live_help</i>전송된 핫 이슈</b></h5><br>
+                        
+                        <ul class="collapsible" data-collapsible="expandable">
+                            
+                            <% Board.where(level:3).reverse.each do |b|%>
+                                <li>
+                                  <div class="collapsible-header"><i class="material-icons">check_box</i><%= b.title %></div>
+                                  
+                                  <div class="collapsible-body">
+                                  <br>    
+                                  <a href="<%= b.content %>" target="_blank">클릭해서 확인하세요!</a>
+                                  <br><br>
+                                  </div>
+                                  
+                                </li>
+                            <% end %>
+                        </ul>
+                
+                
+            </div>
+        </div>
+    </div>
+
+
+<%= render 'service/footer' %>
+<%= render 'service/scrt' %>

@@ -1,0 +1,53 @@
+<% if user_signed_in? %>
+  <% if current_user.tag_list.include?("master") %>
+    <%= render 'manager/nav' %>
+  <% else %>
+    <%= render 'service/nav' %>
+  <% end %>
+<% else %>
+    <%= render 'service/nav' %>
+<% end %>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                        <h5 class="header"><b><i class="small material-icons">mode_edit</i>오아미스 후기</b></h5><br>
+
+
+                        <table class="highlight">
+                          <thead>
+                            <tr>
+                                <th data-field="id">제목</th>
+                                <th data-field="name" style="width:60px;">작성자</th>
+                                <th data-field="price">날짜</th>
+                            </tr>
+                          </thead>
+
+                          <tbody>
+                            <% Board.where(level:2).reverse.each do |b| %>
+                              <tr>
+                                <td>
+                                <a href="/service/review_view/<%= b.id %>"><%= b.title %>
+                              </a></td>
+                                <td><%= b.user.name[0..1]  %> *</td>
+                                <td><%= b.created_at.to_date %></td>
+                              </tr>
+                            <% end %>
+                          </tbody>
+                        </table>
+
+                        <br /><br />
+
+                        <% if user_signed_in? %>
+                          <a class="waves-effect waves-light white-text btn" href="/service/review_write"><i class="material-icons left">mode_edit</i>후기 작성</a>
+                        <% else %>
+                          <a class="waves-effect waves-light black-text btn disabled"><i class="material-icons left">mode_edit</i>후기 작성</a>
+                        <% end %>
+            </div>
+        </div>
+    </div>
+
+
+<%= render 'service/footer' %>
+<%= render 'service/scrt' %>

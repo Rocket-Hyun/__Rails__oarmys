@@ -1,0 +1,240 @@
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+                  <!-- <p style="font-size:2em"><i class="small material-icons left">email</i><b>전송된 소식</b></p> -->
+<br /><br />
+                          <div class="chip">
+
+                            <%= current_user.name %>
+                          <img src="http://vignette3.wikia.nocookie.net/the-enigma-corporation/images/0/01/Users-User-icon.png/revision/latest?cb=20140213102228" alt="Contact Person">
+                          </div>
+
+
+                          <% if current_user.membership %>
+
+                            <div class="chip">
+                            <%= current_user.membership.s_name %>
+                            <img src="https://cdn1.iconfinder.com/data/icons/occupations-3/100/23-512.png" alt="Contact Person">
+                            </div>
+
+                            <br /><br />
+                              <% if current_user.membership.s_date %>
+                                    <% if current_user.membership.s_date.wday == 1 or current_user.membership.s_date.wday == 2 %>
+                                        <% k = 36.days%>
+                                        <% q = 7.days %>
+                                    <% else %>
+                                        <% k = 28.days%>
+                                        <% q = 5.days %>
+                                    <% end %>
+                              <% end %>
+
+                            <div class="chip">
+                              <% if current_user.membership.s_date %>
+                                <% if ((current_user.membership.s_date + k - 1.days) - DateTime.now.to_date).to_i >= 0 %>
+
+                                  수료까지 <b>D-<%= ((current_user.membership.s_date + k - 1.days) - DateTime.now.to_date).to_i %></b>
+                                <% else %>
+                                  훈련소 수료!
+                                <% end %>
+                              <% else %>
+                                  입대날짜를 입력해주세요!
+                              <% end %>
+                            <img src="https://cdn4.iconfinder.com/data/icons/happy-july-4th/100/badge_star_medal_reward_honor_patriotism_patriot-3-512.png" alt="Contact Person">
+                            </div>
+
+                          <div class="chip">
+                            <!-- <img src="https://cdn4.iconfinder.com/data/icons/happy-july-4th/100/badge_star_medal_reward_honor_patriotism_patriot-3-512.png" alt="Contact Person"> -->
+                            <i class="fa fa-list" aria-hidden="true"></i>
+                            <% current_user.membership.category.each do |k| %>
+                                <%= k %>
+                            <% end %>
+                          </div>
+
+                        <br><br>
+
+
+                            <!--멤버십 확정확인 과정-->
+                            <% if current_user.tag_list.include?("MembershipOK") and current_user.membership.s_date %>
+
+
+                              <!--멤버십 기간 확인 과정-->
+
+                              <% if (current_user.membership.s_date + k) > (DateTime.now + 9.hours).to_date  %>
+
+                                  <!--인터넷편지 전송 가능 기간 확인 과정-->
+                                  <%# if (current_user.membership.s_date + q) <= (DateTime.now + 9.hours).to_date %>
+
+
+                                            <%# if current_user.membership.tag_list.grep(/#{(DateTime.now + 9.hours).to_date.to_s}/).uniq.sort == @is_send.uniq.sort %>
+
+
+                                              <%= render 'service/newslist' %>
+
+                                                <!-- <div class="card-content black-text1">
+                                                  <img src="<%= image_path 'done.png' %>" style="width:100%;"><br><br>
+                                                  <div class="center-align">
+                                                    <p><a class="btn btn-primary btn-lg " href="/service/letter_detail/<%= @datetime %>" role="button">확인하러가기</a></p>
+                                                  </div>
+                                                </div> -->
+
+                                            <%# else %>
+                                                <%#= render 'service/newslist' %>
+                                                <!-- <div class="card-content black-text1">
+                                                  <img src="<%= image_path 'wait.png' %>" style="width:100%;"><br><br>
+                                                  <div class="center-align">
+                                                    <p><a class="btn btn-primary btn-lg  disabled"  role="button">뉴스 보러가기</a></p>
+                                                  </div>
+                                                </div> -->
+                                            <%# end %>
+
+
+
+                                      <!-- <div class="collection">
+                                        <% for i in 0..(DateTime.now + 9.hours).to_date - current_user.membership.created_at.to_date %>
+                                          <% if Letter.where(l_date:(@datetime - i)).first %>
+                                            <a href="/service/letter_detail/<%= @datetime - i %>" class="collection-item red-text text-lighten-2">
+                                                <%= (@datetime - i).strftime("%Y") %>년
+                                                <%= (@datetime - i).strftime("%m") %>월
+                                                <%= (@datetime - i).strftime("%d") %>일의 소식
+                                            </a>
+                                          <% end %>
+                                        <% end %>
+                                      </div> -->
+
+                                    <%# else %>
+
+
+                                      <!-- <div class="row">
+                                        <div class="col s12 m12">
+                                          <div class="card">
+                                                <div class="card-content black-text1">
+                                                  <span class="card-title"><p class="center-align"><b><%= current_user.membership.s_name %>님의 편지전송 가능기간이 아닙니다.
+                                                                                                <br>편지는 주소가 나오는<%= (current_user.membership.s_date + q).strftime("%Y") %>년
+                                                                                                <%= (current_user.membership.s_date + q).strftime("%m") %>월
+                                                                                                <%= (current_user.membership.s_date + q).strftime("%d") %>일
+                                                                                                부터 전송됩니다. </b></p></span>
+                                                  <div class="center-align">
+                                                      <p><a class="btn btn-primary btn-lg " href="/service/account" role="button">신청내역 확인하기</a></p>
+                                                  </div>
+                                                </div>
+                                          </div>
+                                        </div>
+                                      </div> -->
+
+
+                                    <%# end %>
+                                    <!--인터넷 편지 전송가능 기간 확인 과정 끝-->
+
+
+                                <% else %>
+
+
+
+                                    <div class="row">
+                                      <div class="col s12 m6 offset-m3">
+                                        <div class="card">
+                                          <div class="card-content black-text1">
+                                            <p class="center fsize1">
+                                              <b>
+                                              <%= current_user.membership.s_name %> 훈련병이 수료하셨습니다!<br />
+                                              축하드립니다!<br /><br />
+                                              자대 배치 이후에도 <br />오아미스를 이용할 수 있습니다!<br /><Br />
+
+                                              <div id="afterreview" class="center fsize1" style="width:80%;">
+                                              후기 작성하기
+                                              </div>
+                                              <br />
+                                              <div id="afterkakao" class="center fsize1" style="width:80%;">
+                                              카카오톡 문의하기
+                                              </div>
+                                              </b>
+                                            </p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+
+
+                                    <%= render 'service/newslist' %>
+
+                              <% end %>
+                              <!--멤버십 기간 확인 과정끝-->
+
+                          <% else %>
+
+                            <%= render 'service/pay' %>
+
+                          <% end %>
+                          <!--멤버십 확정 확인과정 끝-->
+
+
+                        <% else %>
+
+                                  <!--관리자 확인 과정-->
+                                  <% if current_user.tag_list.include?("master") %>
+
+
+                                    <% if Letter.last %>
+
+                                        <% if Letter.last.l_date == (DateTime.now + 9.hours).to_date %>
+
+                                          <div class="row">
+                                            <div class="col s12">
+                                              <div class="card">
+                                                    <div class="card-content black-text1">
+                                                      <span class="card-title"><p class="center-align"><b>오늘의 뉴스를 작성하셨습니다! 수고하셨어요!</b></p></span>
+                                                      <div class="center-align">
+                                                        <p><a class="btn btn-primary btn-lg " href="/manager/letter_find/<%= @datetime %>" role="button">뉴스 확인하러 가기</a></p>
+                                                      </div>
+                                                    </div>
+                                              </div>
+                                            </div>
+                                          </div>
+
+
+                                        <% else %>
+                                          <div class="row">
+                                            <div class="col s12">
+                                              <div class="card">
+                                                    <div class="card-content black-text1">
+                                                      <span class="card-title"><p class="center-align"><b>아직 오늘의 뉴스를 작성하지 않으셨습니다.</b></p></span>
+                                                      <div class="center-align">
+                                                        <p><a class="btn btn-primary btn-lg " href="/manager/letter_write" role="button">오늘의 뉴스 작성하기</a></p>
+                                                      </div>
+                                                    </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        <% end %>
+
+                                    <% else %>
+
+                                        <div class="row">
+                                          <div class="col s12">
+                                            <div class="card cyan lighten-2">
+                                                  <div class="card-content black-text1">
+                                                    <span class="card-title"><p class="center-align"><b>아직 오늘의 뉴스를 작성하지 않으셨습니다.</b></p></span>
+                                                    <div class="center-align">
+                                                      <p><a class="btn btn-primary btn-lg " href="/manager/letter_write" role="button">오늘의 뉴스 작성하기</a></p>
+                                                    </div>
+                                                  </div>
+                                            </div>
+                                          </div>
+                                        </div>
+
+                                    <% end %>
+                                    <!-- 기사 작성 여부 확인 -->
+
+                                      <%= render 'manager/newslist' %>
+
+                                  <% end %>
+                                  <!--관리자 확인 과정 끝-->
+                        <% end %>
+                        <!--서비스 신청 여부 확인과정 끝-->
+
+
+        </div>
+    </div>
+</div>

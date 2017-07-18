@@ -1,0 +1,162 @@
+<%= render 'manager/nav' %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                
+                <br><br>
+                <h5>사용자 관리</h5><br>
+                  <ul class="collapsible" data-collapsible="expandable">
+                    <li>
+                      <div class="collapsible-header active"><i class="material-icons">filter_drama</i>멤버십 신청자</div>
+                      <div class="collapsible-body">
+                          
+                          <div class="collection">
+                            <% Membership.all.reverse.each do |u| %>
+                            
+                                    <% if u.user.tag_list.include?("MembershipOK") %>
+                                    
+                                        <a href="/manager/user_detail/m<%= u.id %>" class="collection-item">&nbsp; &nbsp; &nbsp; &nbsp;<%= u.user.name %><div class="chip">멤버십</div></a>
+                                    
+                                    <% else %>
+                                    
+                                        <a href="/manager/user_detail/m<%= u.id %>" class="collection-item active">&nbsp; &nbsp; &nbsp; &nbsp;<%= u.user.name %></a>
+                                        
+                                    <% end %>
+                                        
+                            <% end %>                                  
+                          </div>                             
+                          
+                      </div>
+                    </li>
+                    <li>
+                      <div class="collapsible-header"><i class="material-icons">place</i>회원 리스트</div>
+                      <div class="collapsible-body">
+                          
+                          <div class="collection">
+                            <% User.all.reverse.each do |m| %>
+                                <a href="/manager/user_detail/<%= m.id %>" class="collection-item
+                                
+                                <% if m.tag_list.include?("MembershipOK") %>
+                                ">&nbsp; &nbsp; &nbsp; &nbsp;<%= m.name %><div class="chip">멤버십</div></a>
+                                            
+                                <% else %>
+                                            
+                                active">&nbsp; &nbsp; &nbsp; &nbsp;<%= m.name %></a>
+                                            
+                                            
+                                <% end %>
+                            <% end %>                                  
+                          </div>                              
+                          
+                      </div>
+                    </li>
+                            
+
+                    <li>
+                      <div class="collapsible-header"><i class="material-icons">whatshot</i>서비스 이용중인 회원</div>
+                      <div class="collapsible-body">
+                          <div class="collection">
+                            <% Membership.all.reverse.each do |u| %>
+                            
+                                <% if u.s_date %>                                
+                                    <% if u.s_type == "1" and ((u.s_date + 36.days) - DateTime.now.to_date).to_i >= 0 %>
+                                    
+                                            <a href="/manager/user_detail/m<%= u.id %>" class="collection-item
+                                        
+                                                <% unless u.user.tag_list.include?("MembershipOK") %>
+                                                active">&nbsp; &nbsp; &nbsp; &nbsp;<%= u.user.name %></a>
+                                                
+                                                <% else %>
+                                                
+                                                ">&nbsp; &nbsp; &nbsp; &nbsp;<%= u.user.name %><div class="chip">멤버십</div></a>
+                                                
+                                                
+                                                <% end %>
+                                        
+                                        
+                                    <% elsif u.s_type == "2" and ((u.s_date + 27.days) - DateTime.now.to_date).to_i >= 0 %>
+                                            
+                                            <a href="/manager/user_detail/m<%= u.id %>" class="collection-item
+                                        
+                                            <% unless u.user.tag_list.include?("MembershipOK") %>
+                                            active">&nbsp; &nbsp; &nbsp; &nbsp;<%= u.user.name %></a>
+                                                
+                                                <% else %>
+                                                
+                                                ">&nbsp; &nbsp; &nbsp; &nbsp;<%= u.user.name %><div class="chip">멤버십</div></a>
+                                                
+                                                
+                                                <% end %>
+                                    
+                                    
+                                    <% end %>
+                                <% end %>
+                                
+                            <% end %>                                  
+                           </div>                            
+                      </div>
+                    </li>
+                    
+                    <li>
+                      <div class="collapsible-header"><i class="material-icons">pause</i>서비스 이용 종료 회원</div>
+                      <div class="collapsible-body">
+
+                          <div class="collection">
+                                <% Membership.all.reverse.each do |u| %>
+                                
+                                    <% if u.s_date %>             
+                                        <% if u.s_type == "1" and ((u.s_date + 36.days) - DateTime.now.to_date).to_i <= 0 %>
+                                        
+                                                <a href="/manager/user_detail/m<%= u.id %>" class="collection-item
+                                            
+                                                <% unless u.user.tag_list.include?("MembershipOK") %>
+                                                active">&nbsp; &nbsp; &nbsp; &nbsp;<%= u.user.name %></a>
+                                                    
+                                                    <% else %>
+                                                    
+                                                    ">&nbsp; &nbsp; &nbsp; &nbsp;<%= u.user.name %><div class="chip">멤버십</div></a>
+                                                    
+                                                    
+                                                    <% end %>
+                                        
+                                            
+                                        <% elsif u.s_type == "2" and ((u.s_date + 27.days) - DateTime.now.to_date).to_i <= 0 %>
+                                                
+                                                <a href="/manager/user_detail/m<%= u.id %>" class="collection-item
+                                            
+                                                    <% unless u.user.tag_list.include?("MembershipOK") %>
+                                                    active">&nbsp; &nbsp; &nbsp; &nbsp;<%= u.user.name %></a>
+                                                        
+                                                    <% else %>
+                                                    
+                                                    ">&nbsp; &nbsp; &nbsp; &nbsp;<%= u.user.name %><div class="chip">멤버십</div></a>
+                                                    
+                                                    
+                                                    <% end %>
+                                        
+                                        <% end %> 
+                                    <% else %>
+
+                                                <a href="/manager/user_detail/m<%= u.id %>" class="collection-item
+                                            
+                                                    active">&nbsp; &nbsp; &nbsp; &nbsp;<%= u.user.name %>
+                                                    <div class="chip">        
+                                                    입대날짜를 입력하지 않았습니다.</div></a>
+                                    
+                                    <% end %>   
+                                <% end %>                          
+                          </div>
+                      </div>
+                    </li>
+                    
+                  </ul>
+                
+
+            </div>
+        </div>
+    </div>
+
+
+<%= render 'service/footer' %>
+<%= render 'service/scrt' %>

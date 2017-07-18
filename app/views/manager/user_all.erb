@@ -1,0 +1,35 @@
+<%= render 'manager/nav' %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                
+                <h1>모든 유저</h1>
+                <p>id,email,name<br>
+                <% @user_all.each do |u| %>
+                    <%= u.id %>,<%= u.email %>,<%= u.name %><br>
+                <% end %>
+                </p>
+                
+                <h1>훈련병 정보</h1>
+                <p>id, user_id,s_name,s_date,s_birth,s_type,category,phone<br>
+                <% @membership_all.each do |m| %>
+                    <%= m.id %>,<%= m.user.name %>,<%= m.s_name %>,<%= m.s_date %>,<%= m.s_birth %>,<%= m.s_type %>,<%= m.category %>,<%= m.phone %><br>
+                <% end %>
+                </p>
+                
+                <h1>기사</h1>
+                <p>title,content,category_id,l_date<br>
+                <% @news_all.each do |m| %>
+                    <%= m.title %>,<%= m.content %>,<%= m.category_id %>,<%= m.l_date %><br>
+                <% end %>
+                </p>
+                
+
+            </div>
+        </div>
+    </div>
+
+
+<%= render 'service/footer' %>
+<%= render 'service/scrt' %>

@@ -1,0 +1,33 @@
+<%= render 'manager/nav' %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <br><br>
+                <h5>오늘의 서비스 신청자</h5><br>
+                  <div class="collection">
+                    <% Membership.where("created_at LIKE ?", "%#{(DateTime.now + 9.hours).to_date}%").reverse.each do |u| %>
+                        <% if u %>
+                            <a href="/manager/user_detail/m<%= u.id %>" class="collection-item
+                        
+                                    <% unless u.user.tag_list.include?("MembershipOK") %>
+                                    active"><%= u.user.name %></a>
+                                    
+                                    <% else %>
+                                    
+                                    "><%= u.user.name %><div class="chip">멤버십</div></a>
+                                    
+                                    
+                                    <% end %>
+                        <% end %>
+                    <% end %>                                  
+                  </div>                
+                
+            </div>
+        </div>
+    </div>
+
+
+<%= render 'service/footer' %>
+<%= render 'service/scrt' %>

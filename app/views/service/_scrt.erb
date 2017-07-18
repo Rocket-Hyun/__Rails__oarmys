@@ -1,0 +1,187 @@
+<script>
+  // Initialize collapse button
+  // Initialize collapsible (uncomment the line below if you use the dropdown variation)
+  //$('.collapsible').collapsible();
+
+  swal(
+    '오아미스 서비스 종료',
+    '오아미스 서비스가 <br />2월 1일부로 종료되었습니다<br />그 동안 이용해주신<br /> 모든 고객분들께 감사드립니다.',
+    'warning'
+  )
+
+
+
+  $(".registered").click(function() {
+    swal(
+      '오아미스 서비스 종료',
+      '오아미스 서비스가 <br />2월 1일부로 종료되었습니다<br />그 동안 이용해주신<br /> 모든 고객분들께 감사드립니다.',
+      'warning'
+    )
+  });
+
+  $(".button-collapse").sideNav();
+
+    $(document).ready(function(){
+      $('.parallax').parallax();
+      $('.parallax').parallax();
+      $('select').material_select();
+      $('.materialboxed').materialbox();
+      $('.collapsible').collapsible({
+        accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+      });
+      $('.slider').slider({
+        indicators: false,
+        full_width: true,
+        interval: 5000,
+        height: 300
+      });
+
+
+    });
+
+    $("#more").click(function() {
+        $('html,body').animate({
+            scrollTop: $(".index-review").offset().top},
+            'slow');
+    });
+
+    $("#back").click(function() {
+      parent.history.back();
+  		return false;
+    });
+
+    $("#afterkakao").click(function() {
+      var url = "http://plus.kakao.com/home/mjdou1z6";
+      $(location).attr('href',url);
+    });
+
+    $(".sidereview").click(function() {
+      var url = "/service/review";
+      $(location).attr('href',url);
+    });
+
+    $("#afterreview").click(function() {
+      var url = "/service/review";
+      $(location).attr('href',url);
+    });
+
+    $("#morereview").click(function() {
+      var url = "/service/review";
+      $(location).attr('href',url);
+    });
+
+    $('#sisa').click(function(){
+       $('#sisa-all').openModal();
+    });
+
+    $('#economy').click(function(){
+       $('#economy-all').openModal();
+    });
+
+    $('#star').click(function(){
+       $('#star-all').openModal();
+    });
+
+
+    $('#soccer').click(function(){
+       $('#soccer-all').openModal();
+    });
+
+    $('#baseball').click(function(){
+       $('#baseball-all').openModal();
+    });
+
+    $('#social').click(function(){
+       $('#social-all').openModal();
+    });
+
+    $('#ready').click(function(){
+      swal(
+        '조금만 기다려주세요!',
+        '새로운 카테고리를 준비중이에요!',
+        'question'
+      )
+    });
+
+        $('#시사').click(function(){
+           $('#sisa-show').openModal();
+        });
+
+        $('#연예').click(function(){
+           $('#star-show').openModal();
+        });
+
+
+        $('#축구').click(function(){
+           $('#soccer-show').openModal();
+        });
+
+        $('#야구').click(function(){
+           $('#baseball-show').openModal();
+        });
+
+        $('#소셜').click(function(){
+           $('#social-show').openModal();
+        });
+
+
+    $('.call_btn').click(function(){
+       $('#call_modal').openModal({
+       });
+    });
+
+    // var numAnim = new CountUp("SomeElementYouWantToAnimate", 24.02, 99.99);
+    // numAnim.start();
+      var options = {
+        useEasing : true,
+        useGrouping : true,
+        separator : ',',
+        decimal : '.',
+        prefix : '',
+        suffix : ''
+      };
+      var demo = new CountUp("myTargetElement", 0, <%= Membership.all.size.to_i %>, 0, 10, options);
+      demo.start();
+
+
+    // $('#ask_btn').click(function(){
+    //    $('#ask_modal').openModal({
+    //    });
+    // });
+
+
+  //클릭 개수 제한하는 스크립트
+  // jQuery(function(){
+  //     var max = 5;
+  //     var checkboxes = $('input[type="checkbox"]');
+
+  //     checkboxes.change(function(){
+  //         var current = checkboxes.filter(':checked').length;
+  //         checkboxes.filter(':not(:checked)').prop('disabled', current >= max);
+  //     });
+  // });
+
+
+
+  $("input, textarea").keyup(function(){
+  var value = $(this).val();
+  var arr_char = new Array();
+
+  arr_char.push("<");
+  arr_char.push(">");
+  for(var i=0 ; i<arr_char.length ; i++)
+  {
+  if(value.indexOf(arr_char[i]) != -1)
+  {
+  window.alert("<, >, ', \" 특수문자는 사용하실 수 없습니다.");
+  value = value.substr(0, value.indexOf(arr_char[i]));
+
+  $(this).val(value);
+  }
+  }
+
+  });
+
+$(".dropdown-button").dropdown();
+
+</script>

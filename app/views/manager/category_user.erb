@@ -1,0 +1,21 @@
+<%= render 'manager/nav' %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1><%= @categoryname %>를 신청한 유저들</h1>
+                
+              <div class="collection">
+                 <% @memberships.each do |m| %>
+                    <a href="/manager/user_detail/<%= m.user.id %>" class="collection-item"><%= m.user.name %></a>
+                 <% end %>
+              </div>                
+                
+                
+            </div>
+        </div>
+    </div>
+
+
+<%= render 'service/footer' %>
+<%= render 'service/scrt' %>

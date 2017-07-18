@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  s_name: MyString
+  s_date: 2016-07-04
+  s_type: MyString
+  category: MyString
+  user_id: 1
+
+two:
+  s_name: MyString
+  s_date: 2016-07-04
+  s_type: MyString
+  category: MyString
+  user_id: 1

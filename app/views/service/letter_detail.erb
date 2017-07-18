@@ -1,0 +1,41 @@
+<%= render 'service/nav' %>
+
+
+  <div class="letter_detail"
+
+    <% if @letter.image_url != "" %>
+    style="background-image: url(<%= @letter.image_url %>);
+    <% end %>
+
+    ">
+    <div class="black-filter" style="height:100%;width:100%;background: rgba(0, 0, 0, .4);">
+        <div class="container">
+          <div class="row">
+            <h5 class="center bold white-text letter_detail_title fsize1" ><%= @letter.title %></h5>
+          </div>
+        </div>
+    </div>
+  </div>
+    <div class="container">
+        <div class="row" style="margin-top:20px;">
+            <div class="col s12 l6 offset-l3">
+              <% if Category.find(@letter.category_id).name == "소셜" %>
+                <img class="center" src="<%= @letter.image_url %>" style="width:100%;"/><br /><br />
+              <% end %>
+              <h5 class="fsize"><%= simple_format @letter.content.gsub(/\n/, '<br/>') %></h5>
+              <br /><br />
+              <% if @letter.image_origin != "" %>
+              <a href="<%= @letter.image_origin %>" target="_blank"><h5 class="fsize">사진 출처링크</h5></a>
+              <% end %>
+              <br /><br />
+              <div id="back" class="center fsize1" style="width:80%;">
+                홈으로 가기
+              </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+<%= render 'service/footer' %>
+<%= render 'service/scrt' %>

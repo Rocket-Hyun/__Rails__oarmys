@@ -1,0 +1,57 @@
+<%= render 'manager/nav' %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                        <h5 class="header"><b><i class="small material-icons">announcement</i>오아미스 공지사항</b></h5><br>
+                        
+                        <ul class="collapsible" data-collapsible="expandable">
+                            
+                            <% Board.where(level:0).each do |b|%>
+                                <li>
+                                  <div class="collapsible-header"><i class="material-icons"></i><%= b.title %></div>
+                                  <div class="collapsible-body"><%= simple_format b.content.gsub(/\n/, '<br/>') %>
+                                  
+                                  <a href="/manager/announce_delete/<%= b.id %>">[삭제]</a><br>
+                                  <a href="/manager/announce_update/<%= b.id %>">[수정]</a>
+                                  
+                                  </div>
+                                </li>
+                            <% end %>
+                            
+                        </ul>   
+                            <a href="/manager/announce_write">[공지사항 작성]</a>
+                        
+                        <h5 class="header"><b><i class="small material-icons">live_help</i>전송된 핫 이슈</b></h5><br>
+                        
+                        <ul class="collapsible" data-collapsible="expandable">
+                            
+                            <% Board.where(level:3).each do |b|%>
+                                <li>
+                                  <div class="collapsible-header"><i class="material-icons">check_box</i><%= b.title %></div>
+                                  <div class="collapsible-body"><a href="<%= b.content %>" target="_blank"><%= b.content %></a><br><br>
+                                    
+                                  
+                                  <a href="/manager/news_delete/<%= b.id %>">[삭제]</a><br>
+                                  <a href="/manager/news_update/<%= b.id %>">[수정]</a>
+                                  
+                                  </div>
+                                </li>
+                            <% end %>
+                        </ul>
+                            <a href="/manager/news_write">[핫이슈 작성]</a>
+                        
+                    
+                        
+                        <h5 class="header"><a href="/service/ask"><b><i class="small material-icons">mode_edit</i>오아미스 문의 게시판</b></a></h5><br>
+                
+                        
+                        <!--<h5 class="header"><a href="/service/review"><b><i class="small material-icons">mode_edit</i>오아미스 후기 게시판</b></a></h5><br>-->
+                
+            </div>
+        </div>
+    </div>
+
+
+<%= render 'service/footer' %>
+<%= render 'service/scrt' %>

@@ -1,0 +1,11 @@
+.hometext{
+    font-size:10px ;
+}
+
+#error_explanation{
+    font-size: 20px;
+}
+#error_explanation h2 {
+    font-size: 30px;
+    font-weight: bold
+}

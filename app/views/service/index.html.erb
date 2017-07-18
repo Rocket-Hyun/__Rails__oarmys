@@ -1,0 +1,450 @@
+<% if user_signed_in? %>
+  <% if current_user.tag_list.include?("master") %>
+  <%= render 'manager/nav' %>
+  <% else %>
+  <%= render 'service/nav' %>
+  <% end %>
+<% else %>
+  <%= render 'service/nav' %>
+<% end %>
+
+
+                <!--로그인 확인-->
+                <% if user_signed_in? %>
+                  <%= render 'service/signedin' %>
+                <% else %>
+
+
+<!-- 본문 시작 -->
+<section>
+  <article>
+
+  <div class="section no-pad-bot index-banners" style="background-image: url('<%= image_path 'bg-01.jpg' %>');">
+    <div class="black-filter" style="height:100%;width:100%;background: rgba(0, 0, 0, .4);">
+      <div class="container">
+
+          <!-- <br><br>
+          <h1 class="header center teal-text text-lighten-2">Parallax Template</h1>
+          <div class="row center">
+            <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
+          </div>
+          <div class="row center">
+            <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
+          </div>
+          <br><br> -->
+          <br /><br /><br /><br />
+            <div class="center">
+              <h3 class="center fsize2" style="margin-bottom:0px;color:#fff;">훈련병 구독 잡지</h3>
+              <h1 class="center fsize4" style="margin:0px;color:#fff;"><b>오아미스</b></h1>
+              <br />
+              <h5 class="center fsize0 black-text white-text">지금까지<br />오아미스를 선물 받은 훈련병<br /><Br />
+                <span class="fsize3" style="color:#24B29A;" id="myTargetElement"><%= Membership.all.size.to_i %></span>명<br />
+              </h5>
+              <br /><br />
+              <!-- <img class="main-img" src="<%= image_path 'web-01.png' %>"/>
+              <Br /> -->
+              <!-- <img class="main-img" src="<%= image_path 'web-02.png' %>"/> -->
+                <div id="more" class="center fsize1" style="width:80%;color:#fff;">
+                  궁금하신가요?
+                </div>
+
+                <!-- <a class="btn waves-effect red accent-1 about-more"  style="margin-bottom:10px;">자세히 알아보기</a><br />
+                <a href="/users/sign_in" id="download-button" class="btn waves-effect waves-light" >로그인 / 서비스신청</a> -->
+
+            </div>
+            <br>
+
+
+      </div>
+    </div>
+  </div>
+</article>
+
+<article>
+  <div class="section no-pad-bot sectioner">
+  </div>
+</article>
+
+<article>
+    <div class="section no-pad-bot index-review" style="padding-top:0;">
+      <div class="review-top">
+        <h3 class="center fsize1 white-text" style="margin:0;line-height:60px;">오아미스 이용후기</h3>
+      </div>
+      <div class="slider">
+        <ul class="slides">
+          <li class="review-img" style="background-image:url('<%= image_path 'review-01.jpg' %>')">
+            <div class="caption center-align hide-on-med-and-up">
+              <p class="fsize1 black-text bold">훈련병 어머니 이운* 님</p>
+            </div>
+          </li>
+          <li class="review-img" style="background-image:url('<%= image_path 'review-02.jpg' %>')">
+            <div class="caption center-align hide-on-med-and-up black-text">
+              <p class="fsize1 black-text bold">훈련병 어머니 안미* 님</p>
+            </div>
+          </li>
+          <li class="review-img" style="background-image:url('<%= image_path 'review-03.jpg' %>')">
+            <div class="caption center-align hide-on-med-and-up black-text">
+              <p class="fsize1 black-text bold">훈련병 어머니 이서* 님</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+<div class="section no-pad-bot">
+  <div class="review-bottom" style="margin-top:20px; margin-bottom:20px;">
+    <div id="morereview" class="center fsize1 bold" style="width:80%;">
+      더 많은 후기 보기
+    </div>
+  </div>
+</div>
+
+</article>
+
+
+<article>
+  <div class="section no-pad-bot sectioner">
+  </div>
+</article>
+
+<article>
+<!-- 소식 자세히보기 모달 -->
+  <div id="sisa-all" class="modal modal-fixed-footer" >
+    <div class="modal-content">
+      <img src=<%= image_path 'sisa.JPG' %> style="width:100%;" />
+    </div>
+    <div class="modal-footer">
+      <a class=" modal-action modal-close waves-effect waves-green btn-flat">닫기</a>
+    </div>
+  </div>
+
+  <div id="economy-all" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <img src=<%= image_path 'economy.JPG' %> style="width:100%;"/>
+    </div>
+    <div class="modal-footer">
+      <a class=" modal-action modal-close waves-effect waves-green btn-flat">닫기</a>
+    </div>
+  </div>
+
+  <div id="star-all" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <img src=<%= image_path 'star.JPG' %> style="width:100%;"/>
+    </div>
+    <div class="modal-footer">
+      <a class=" modal-action modal-close waves-effect waves-green btn-flat">닫기</a>
+    </div>
+  </div>
+
+  <div id="soccer-all" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <img src=<%= image_path 'soccer.JPG' %> style="width:100%;"/>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-action modal-close waves-effect waves-green btn-flat">닫기</a>
+    </div>
+  </div>
+
+  <div id="baseball-all" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <img src=<%= image_path 'baseball.JPG' %> style="width:100%;"/>
+    </div>
+    <div class="modal-footer">
+      <a class=" modal-action modal-close waves-effect waves-green btn-flat">닫기</a>
+    </div>
+  </div>
+
+  <div id="social-all" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <img src=<%= image_path 'social.jpg' %> style="width:100%;"/>
+    </div>
+    <div class="modal-footer">
+      <a class=" modal-action modal-close waves-effect waves-green btn-flat">닫기</a>
+    </div>
+  </div>
+</article>
+
+<article>
+<!-- 다시 본문 -->
+  <div class="section no-pad-bot" style="background-color:#fff;" id="info-more">
+    <div class="container">
+
+      <div class="row">
+        <br />
+        <div class="col s12">
+          <h3 class="center fsize2 black-text bold">외로운 훈련병들을 위해</h3>
+          <hr style="width:30%;border-color:#24B29A;"/>
+          <h5 class="center fsize1 black-text">
+            <br />
+                        <img src="<%= image_path 'sample.png' %>" class="sample"><br /><br />
+             훈련병이 <b>좋아하는 소식들</b>만 골라<br />
+             <b>원하는 기간 만큼만</b> 신청하세요.<br /><br />
+             오아미스가 <b>사회 소식에 대한 갈증</b>을<br />
+            시원하게 해소해드립니다.<br />
+
+
+          </h5>
+          <p class="center fsize0"><b>*아이콘을 누르면<br />예시를 볼 수 있습니다.</b></p>
+
+        </div>
+        <br />
+        <div class="col s4 offset-s1 m2 offset-m2" id="sisa">
+          <div class="icon-block">
+          <h5 class="center bold fsize1 category-text">시사</h5>
+          <div style="width:80%; margin:0 auto;">
+              <img src=<%= image_path 'earth.png' %> class="category-img"/>
+          </div>
+            <!-- <h2 class="center green-text"><i class="fa fa-globe fsize2" aria-hidden="true"></i></h2> -->
+          </div>
+        </div>
+        <!-- <div class="col s6 m4" id="economy">
+          <div class="icon-block">
+            <h5 class="center bold fsize1">경제</h5>
+            <div class="imgborder" style="width:80%; margin:0 auto;">
+              <img src=<%= image_path 'economy.JPG' %> style="width:100%;"/>
+            </div>
+          </div>
+        </div> -->
+        <div class="col s4 offset-s2 m2 offset-m1" id="star">
+          <div class="icon-block">
+          <h5 class="center bold fsize1 category-text">연예</h5>
+          <div style="width:80%; margin:0 auto;">
+            <img src=<%= image_path 'cinema-star.png' %> class="category-img"/>
+          </div>
+            <!-- <h2 class="center yellow-text"><i class="fa fa-star-o fsize2" aria-hidden="true"></i></h2> -->
+          </div>
+        </div>
+        <!-- <div class="col s12 m3">
+          <br class="hide-on-small-only"/>
+        </div> -->
+        <div class="col s4 offset-s1 m2 offset-m1" id="soccer">
+          <div class="icon-block">
+          <h5 class="center bold fsize1 category-text">축구</h5>
+          <div style="width:80%; margin:0 auto;">
+            <img src=<%= image_path 'football.png' %> class="category-img"/>
+          </div>
+            <!-- <h2 class="center black-text"><i class="fa fa-futbol-o fsize2" aria-hidden="true"></i></h2> -->
+          </div>
+        </div>
+        <div class="col s4 offset-s2 m2 offset-m2" id="baseball">
+          <div class="icon-block">
+          <h5 class="center bold fsize1 category-text">야구</h5>
+          <div style="width:80%; margin:0 auto;">
+            <img src=<%= image_path 'baseball.png' %> class="category-img"/>
+          </div>
+            <!-- <h2 class="center brown-text"><i class="fa fa-hand-rock-o fsize2" aria-hidden="true"></i></h2> -->
+          </div>
+        </div>
+        <div class="col s4 offset-s1 m2 offset-m1" id="social">
+          <div class="icon-block">
+          <h5 class="center bold fsize1 category-text">소셜</h5>
+          <div style="width:80%; margin:0 auto;">
+            <img src=<%= image_path 'social.png' %> class="category-img"/>
+          </div>
+            <!-- <h2 class="center brown-text"><i class="fa fa-hand-rock-o fsize2" aria-hidden="true"></i></h2> -->
+          </div>
+        </div>
+        <div class="col s4 offset-s2 m2 offset-m1" id="ready">
+          <div class="icon-block">
+          <h5 class="center bold fsize1 category-text">준비중</h5>
+          <div style="width:80%; margin:0 auto;">
+            <img src=<%= image_path 'questions.png' %> class="category-img"/>
+          </div>
+            <!-- <h2 class="center brown-text"><i class="fa fa-hand-rock-o fsize2" aria-hidden="true"></i></h2> -->
+          </div>
+        </div>
+        <br /><br />
+        <!-- <div class="col s12"><br/><br class="hide-on-small-only"/>
+          <h3 class="center fsize0"><b>*카테고리 1개당 일주일에 3,000원입니다.</b></h3>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</article>
+
+
+<article>
+  <div class="section no-pad-bot sectioner">
+  </div>
+</article>
+
+
+<article>
+  <div class="section no-pad-bot index-banners2" style="background-image: url('<%= image_path 'bg-02.jpg' %>');">
+    <div class="black-filter" style="height:100%;width:100%;background: rgba(0, 0, 0, .4);">
+      <div class="container">
+        <div class="row">
+          <div class="col s12">
+            <Br />
+            <!-- <div class="card" style="background: rgba(0, 0, 0, .4);">
+              <div class="card-content white-text center">
+                <span class="card_title center fsize1">세상 소식</span>
+                <hr style="width:30%;border-color:#24B29A;"/>
+                <br class="hide-on-small-only"/><p class="fsize">주3회 훈련병에게
+                 세상의 재미있는 이슈들을 편지로 전송해드립니다.
+                <br /><br />
+                훈련병은 힘든 훈련을 마치고 오아시스 같은 편지를 받을 수 있습니다.
+                </p>
+              </div>
+            </div>
+            <div class="card" style="background: rgba(0, 0, 0, .4);">
+              <div class="card-content white-text center">
+                <span class="card_title center fsize1">소식 내용과 전송 여부 확인</span>
+                <hr style="width:30%;border-color:#24B29A;"/>
+                <br class="hide-on-small-only"/><p class="fsize">오아미스 홈페이지를 통해 소식 내용과 전송 여부까지 확인하실 수 있습니다.
+                <br /><br />
+                전송된 세상 소식으로 훈련병과 다양한 이야기를 나눌 수 있습니다.
+                </p>
+              </div>
+            </div> -->
+            <div class="card" style="background: rgba(0, 0, 0, .4);">
+              <div class="card-content white-text center bold">
+                <span class="card_title center fsize2 bold">착한 이용료</span>
+                <hr style="width:30%;border-color:#24B29A;"/>
+                <br class="hide-on-small-only"/>
+                  <span class="fsize">
+                    <table class="bordered pricetable">
+                      <thead>
+                        <tr>
+                            <th data-field="id">카테고리 개수</th>
+                            <!-- <th data-field="name">Item Name</th> -->
+                            <th data-field="price">1주 이용가격</th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        <tr>
+                          <td>1개</td>
+                          <!-- <td>Eclair</td> -->
+                          <td style="color:#24B29A">3,000원</td>
+                        </tr>
+                        <tr>
+                          <td>2개</td>
+                          <!-- <td>Jellybean</td> -->
+                          <td><span style="text-decoration: line-through;">6,000원</span><span style="color:#24B29A">&nbsp;5,000원</span></td>
+                        </tr>
+                        <tr>
+                          <td>3개</td>
+                          <!-- <td>Lollipop</td> -->
+                          <td><span style="text-decoration: line-through;">9,000원</span><span style="color:#24B29A">&nbsp;6,500원</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <br />
+                    *3개 이상부터는 1주 이용료 <span style="color:#24B29A">1,500원씩</span> 추가<br />
+                    **남은 수료기간에서 일주일 빼고 신청해주세요
+                  </span><br />
+                  <!-- <span class="fsize3" style="color:#24B29A">3,000원</span><br /> -->
+                  <!-- <span class="fsize0">*2개 카테고리 이상 신청시 할인가격이 적용됩니다.</span> -->
+                  <br />
+                  <span class="fsize">
+                    수익금의 10%는 <br />
+                 군인 인권을 위해 힘쓰고 있는<br />
+                 <a style="color:#24B29A" href="http://www.mhrk.org/" target="_blank">군인권센터</a>
+                    후원금으로 <br />매달 사용됩니다.<br />
+                  </span>
+                  <br />
+               <!-- <a href="http://www.mhrk.org/" target="_blank" style="font-size:1.5em;"><img src="<%= image_path "center.JPG" %>" style="height:100px;"></a> -->
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<article>
+    <div class="section no-pad-bot sectioner">
+    </div>
+</article>
+<br />
+
+<article>
+    <div class="section no-pad-bot index-register">
+
+        <h3 class="center fsize2 black-text bold">최고의 선물 오아미스</h3>
+        <hr style="width:30%;border-color:#24B29A;"/><br /><br />
+        <h5 class="center fsize0 black-text">지금까지  오아미스는 <br /><Br />
+          <span class="fsize2" style="color:#24B29A;"><%= Membership.all.size.to_i %></span>명의<br />
+           훈련병과 함께 했습니다.<br />
+          <br />힘든 훈련소 기간동안<br />큰 힘이 되어줄 오아미스를 선물하세요!
+        </h5>
+        <Br />
+      <!-- <a href="/users/sign_up"> -->
+        <div class="register registered center fsize1" style="width:80%;color:#24B29A;">
+          <b>오아미스 신청하기</b>
+        </div>
+      <!-- </a> -->
+    </div>
+
+    <br />
+</article>
+
+<footer>
+    <!-- Fixed Footer -->
+    <div id="bottom-section">
+      <div class="row white-text">
+        <a href="http://plus.kakao.com/home/mjdou1z6" target="_blank">
+          <div class="col s4" style="border-right:1px #fff solid">
+            <h3 class="center fsize0 white-text" style="line-height:50px;margin:0px;"><i class="fa fa-comment" aria-hidden="true"></i> 카톡 문의</h3>
+          </div>
+        </a>
+        <a href="tel:050-714-555607" class="hide-on-med-and-up">
+          <div class="col s4" style="border-right:1px #fff solid">
+            <h3 class="center fsize0 white-text" style="line-height:50px;margin:0px;"><i class="fa fa-phone" aria-hidden="true"></i> 전화 문의</h3>
+          </div>
+        </a>
+        <a class="hide-on-small-only">
+          <div class="col s4 call_btn" style="border-right:1px #fff solid">
+            <h3 class="center fsize0 white-text" style="line-height:50px;margin:0px;"><i class="fa fa-phone" aria-hidden="true"></i> 전화 문의</h3>
+          </div>
+        </a>
+        <!-- <a href="/users/sign_up"> -->
+          <div class="col s4 registered">
+            <h3 class="center fsize0 white-text" style="line-height:50px;margin:0px;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 신청하기</h3>
+          </div>
+        <!-- </a> -->
+      </div>
+    </div>
+    <div id="call_modal" class="modal modal-fixed-footer" style="height:30%;">
+      <div class="modal-content">
+        <div class="row">
+          <h3 class="center fsize2">
+            궁금하신 사항은<br />
+            050-7145-55607로<br />
+          전화주시면 친절하게 답변 해드리겠습니다^^</h3>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a class=" modal-action modal-close waves-effect waves-green btn-flat">닫기</a>
+      </div>
+    </div>
+</footer>
+
+</section>
+
+        <!-- <div id="ask_modal" class="modal modal-fixed-footer" style="height:20%;background-color:rgba(0, 0, 0, .5)">
+          <div class="modal-content">
+            <div class="row">
+              <div class="col s6 ask_btn2">
+                <h3 class="center fsize1 white-text">카톡 문의</h3>
+              </div>
+              <div class="col s6 ask_btn2">
+                <h3 class="center fsize1 white-text">전화 문의</h3>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a class=" modal-actionjdgusq modal-close waves-effect waves-green btn-flat">닫기</a>
+          </div>
+        </div> -->
+
+<%= render 'service/footer' %>
+
+                <% end %>
+                <!--로그인 확인 끝-->
+
+
+<%= render 'service/scrt' %>

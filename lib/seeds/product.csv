@@ -1,0 +1,6 @@
+﻿id,email,encrypted_password,reset_password_token,reset_password_sent_at,remember_created_at,sign_in_count,current_sign_in_at,last_sign_in_at,current_sign_in_ip,last_sign_in_ip,created_at,updated_at,name,agree
+1,admin@naver.com,$2a$11$..lbfrxtiqlqAgYPd6R9JuKPVp.1bPbg76C9Kguna4FdG8TMoMoSK,,,,5,2016-08-09 23:45:29 UTC,2016-08-09 09:51:04 UTC,222.109.63.195,163.239.255.30,2016-08-09 02:52:33 UTC,2016-08-10 03:31:26 UTC,관리자,false
+2,test0@naver.com,$2a$11$rNWToYt.7gzoqPDf2MTA8uRN7TfX5S6cwV9bzkGst5HRLCnkuNtn.,,,,3,2016-08-09 09:43:00 UTC,2016-08-09 09:35:07 UTC,39.7.54.159,39.7.54.159,2016-08-09 02:52:34 UTC,2016-08-09 10:05:39 UTC,테스트0,false
+3,test1@naver.com,$2a$11$h7rMA8SQoRN4yFT64hFC4.gFvRcMMXxjfzHuOOqSshlv6RWwekeTm,,,,2,2016-08-09 10:18:17 UTC,2016-08-09 10:05:55 UTC,163.239.255.30,39.7.54.159,2016-08-09 02:52:34 UTC,2016-08-09 10:18:17 UTC,테스트1,false
+4,test2@naver.com,$2a$11$yhCFWETLKkQqdmznXhVin.U5iNQnisn8sybXrUqn933eeCfciG5n2,,,,1,2016-08-09 10:18:33 UTC,2016-08-09 10:18:33 UTC,163.239.255.30,163.239.255.30,2016-08-09 02:52:34 UTC,2016-08-09 10:18:33 UTC,테스트2,false
+5,test3@naver.com,$2a$11$PwEPYRT0fTHGdufGEZQtVe2FJxikMaTf5WNorvhLgo7gmk8P8B03i,,,,1,2016-08-09 10:09:58 UTC,2016-08-09 10:09:58 UTC,39.7.54.159,39.7.54.159,2016-08-09 02:52:34 UTC,2016-08-09 10:09:58 UTC,테스트3,false

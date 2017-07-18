@@ -1,0 +1,112 @@
+<%= render 'manager/nav' %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <br><br>
+                <h5>사용자 상세정보</h5><br>
+                <% if @member.membership %>
+                      <div class="row">
+                        <div class="col s12 m6">
+                          <div class="card white">
+                            <div class="card-content">
+                              <span class="card-title"><%= @member.name %>님</span>
+                                <p>이메일 : <%= @member.email %></p>
+                                <p>동의여부 : <%= @member.agree %></p>
+                                <p>훈련병 이름 : <%= @member.membership.s_name %></p>
+                                <p>훈련병 생년월일 : <%= @member.membership.s_birth %></p>
+                                <p>훈련병 입대날짜 : <%= @member.membership.s_date %></p>
+                                <p>훈련병 주소 : <%= @member.membership.s_type %>
+
+                                </p>
+                                <p>훈련병 수료날짜 :
+
+                                <% if @member.membership.s_date %>
+                                    <% if @member.membership.s_date.wday == 1 or @member.membership.s_date.wday == 2 %>
+
+                                      <%= @member.membership.s_date + 37.days %></p>
+
+                                    <% else %>
+
+                                      <%= @member.membership.s_date + 28.days %></p>
+
+                                    <% end %>
+                                <% else %>
+                                  입대 날짜를 입력하지 않았습니다.</p>
+                                <% end %>
+
+                                <p>신청 카테고리 :
+                                    <% @member.membership.category.each do |k| %>
+                                        <%= k %>
+                                    <% end %>
+                                </p>
+                                <p>
+                                  연락처 :
+
+                                    <% if @member.membership.phone == "" %>
+                                        연락처를 입력하지 않았습니다.
+                                    <% else %>
+                                        <%= @member.membership.phone %>
+                                    <% end %>
+                                </p>
+                                <p>
+                                  가입일자 : <%= (@member.created_at + 9.hours).to_time %>
+                                </p>
+                            </div>
+                            <div class="card-action">
+                                <% if @member.tag_list.include?("MembershipOK") %>
+                                  <a href="/manager/membership_delete/<%= @member.id %>">[멤버십 취소]</a>
+                                <% else %>
+                                  <a href="/manager/membership_give/<%= @member.id %>">[멤버십 등록]</a>
+                                <% end %>
+                                  <a href="/manager/membership_update/<%= @member.id %>">[멤버십 수정]</a>
+                                  <a href="/manager/membership_destroy/<%= @member.membership.id %>">[멤버십 삭제]</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
+
+                      <ul class="collection with-header">
+                        <li class="collection-header"><h5>보낸 편지들</h5></li>
+                        <% @member.membership.tag_list.each do |t|  %>
+                        <li class="collection-item"><%= t %></li>
+                        <% end %>
+                      </ul>
+
+
+                <% else %>
+
+
+                      <div class="row">
+                        <div class="col s12 m6">
+                          <div class="card white">
+                            <div class="card-content">
+                              <span class="card-title"><%= @member.name %>님</span>
+                                <p>
+                                  이메일 : <%= @member.email %>
+                                </p>
+                                <p>동의여부 : <%= @member.agree %></p>
+                                <p>
+                                  가입일자 : <%= @member.created_at + 9.hours %>
+                                </p>
+                                <p> 아직 멤버십을 신청하지 않았습니다.
+                                </p>
+                                <a href="/manager/user_destroy/<%= @member.id %>">[회원 삭제]</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
+                <% end %>
+
+            </div>
+        </div>
+    </div>
+
+
+<%= render 'service/footer' %>
+<%= render 'service/scrt' %>

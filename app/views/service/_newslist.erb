@@ -1,0 +1,94 @@
+<div id="newslist">
+
+
+<% for i in 0..(DateTime.now + 9.hours).to_date - current_user.membership.created_at.to_date + 3 %>
+  <% if Letter.where(l_date:(@datetime - i)).first %>
+    <!-- <a href="/service/letter_detail/<%= @datetime - i %>" class="collection-item red-text text-lighten-2">
+
+    </a> -->
+
+    <h1 class="center fsize1 bold"><%= (@datetime - i).strftime("%Y") %>년 <%= (@datetime - i).strftime("%m") %>월 <%= (@datetime - i).strftime("%d") %>일의 오아미스</h1>
+    <div class="row">
+        <div class="col s12 cards-container">
+      <% Letter.where(l_date:(@datetime - i)).each do |l| %>
+        <a href="/service/letter_detail/<%= l.id %>">
+          <div class="card">
+            <!-- <div class="card-content"> -->
+              <div class="card-image"
+                <% if l.image_url != "" %>
+                style="background-image: url(<%= l.image_url %>);
+                <% else %>
+                  <% if Category.find(l.category_id).name == "시사" %>
+                  style="background-image: url(<%= image_path 'sisaex.jpg' %>);
+                  <% elsif Category.find(l.category_id).name == "연예" %>
+                  style="background-image: url(<%= image_path 'starex.jpg' %>);
+                  <% elsif Category.find(l.category_id).name == "축구" %>
+                  style="background-image: url(<%= image_path 'soccerex.jpg' %>);
+                  <% elsif Category.find(l.category_id).name == "야구" %>
+                  style="background-image: url(<%= image_path 'baseballex.jpg' %>);
+                  <% elsif Category.find(l.category_id).name == "소셜" %>
+                  style="background-image: url(<%= image_path 'socialex.jpg' %>);
+                  <% end %>
+                <% end %>
+                ">
+                <span class="card-title fsize0" style="background-color:#24B29A;margin:0;padding:0;"><%= Category.find(l.category_id).name %></span>
+              </div>
+              <div class="card-content">
+                  <p><%= l.title %></p>
+              </div>
+            <!-- </div> -->
+          </div>
+        </a>
+      <% end %>
+      </div>
+    </div>
+
+
+  <% end %>
+<% end %>
+
+</div>
+
+
+<!-- 피드형식 -->
+<!-- <script>
+var page = 1;
+
+  $(window).scroll(function() {
+      if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+        $("#newslist").append($('<h1/>',{
+          text:'12월 19일의 소식'
+        }));
+        $("#newslist").append($('<div/>',{
+          class:'row',
+          id:page
+        }));
+        $("#"+page).append($('<div/>',{
+          class:'col s12 m4',
+          id: page+'-'+page
+        }));
+        $("#"+page+"-"+page).append($('<div/>',{
+          class:'card',
+          text:page+'-'+page+'이다'
+        }));
+        $("#"+page).append($('<div/>',{
+          class:'col s12 m4',
+          id:page + '-' + (page+1)
+        }));
+        $("#"+page+"-"+(page+1)).append($('<div/>',{
+          class:'card',
+          text:page+'-'+(page+1)+'이다'
+        }));
+        $("#"+page).append($('<div/>',{
+          class:'col s12 m4',
+          id:page+'-'+(page+2)
+        }));
+        $("#"+page+"-"+(page+2)).append($('<div/>',{
+          class:'card',
+          text:page+'-'+(page+2)+'이다.'
+        }));
+
+        page = page + 1;
+    }
+  });
+</script> -->

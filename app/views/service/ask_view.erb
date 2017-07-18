@@ -1,0 +1,95 @@
+<% if user_signed_in? %>
+  <% if current_user.tag_list.include?("master") %>
+    <%= render 'manager/nav' %>
+  <% else %>
+    <%= render 'service/nav' %>
+  <% end %>
+<% else %>
+    <%= render 'service/nav' %>
+<% end %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                
+              <div class="card white">
+                    <div class="card-content black-text">
+                      <span class="card-title"><b><%= @post.title %></b></span><br>
+                      <div class="chip">
+                        
+                        <%= User.find(@post.user_id).name %>
+                      <img src="https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/512/user.png " alt="Contact Person">
+                      </div>
+                      
+                      <div class="chip">
+                        
+                        <%= @post.created_at.to_date %>
+                      <img src="https://cdn4.iconfinder.com/data/icons/pictograms-1/512/Calendar-512.png" alt="Contact Person">
+                      </div>
+                      
+                    </div>
+                    <div class="card-action">
+                    
+                      <p><%= simple_format @post.content.gsub(/\n/, '<br/>') %></p>
+                      
+                      
+                      <br>
+                      
+                      <% if user_signed_in? %>
+                        <% if current_user.id == @post.user_id or current_user.tag_list.first == "master" %>
+                            <a href="/service/ask_delete/<%= @post.id %>">[삭제]</a>
+                        <% end %>
+                      <% end %>
+                    </div>
+                    <div class="card-action">
+                            <ul class="collection">
+                              <% @post.comments.each do |c| %>
+                                  <li class="collection-item">
+                                      <div class="chip">
+                                        
+                                        <%= c.user.name %>
+                                      <img src="https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/512/user.png " alt="Contact Person">
+                                      </div>                                      
+                                       <%= c.content %> <h6 class="thin"><%= c.created_at.to_date %></h6>
+                                       
+                                       <% if user_signed_in? %>
+                                         <% if c.user == current_user or current_user.tag_list.first == "master"  %>
+                                             <a href="/service/comment_delete/<%= c.id %>">[삭제]</a>
+                                         <% end %>
+                                       <% end %>
+                                       </li>
+                              <% end %>
+                            </ul>
+                          
+                    </div>
+                    
+                    
+                    <% if user_signed_in? %>
+                      <div class="card-action">
+                        <div class="row">
+                          <form class="col s12" method="post" action="/service/comment_write_real">
+                            <div class="row">
+                              <div class="input-field col s8">
+                                <i class="material-icons prefix">account_circle</i>
+                                <label for="icon_prefix">댓글을 입력해주세요</label>
+                                <input id="icon_prefix" type="text" class="validate" name="content">
+                                <input id="icon_prefix" type="hidden" class="validate" name="user_id" value=<%= current_user.id %>>
+                                <input id="icon_prefix" type="hidden" class="validate" name="board_id" value=<%= @post.id %>>
+                              </div>
+                                <button class="btn waves-effect waves-light" type="submit">댓글달기
+                                </button>
+                            </div>
+                           </form>
+                        </div>
+                      </div>
+                      
+                    <% end %>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+
+<%= render 'service/footer' %>
+<%= render 'service/scrt' %>
